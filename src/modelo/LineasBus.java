@@ -61,5 +61,10 @@ public class LineasBus {
 	public void setMunicipio(String municipio) {
 		this.municipio = municipio;
 	}
+	public String toString() {
+		
+		return this.nombre_bus;
+		
+	}
 		
 }

@@ -10,8 +10,7 @@ public class Conexion {
 		
 		String password = "";
 		String usuario = "root"; //root@localhost
-		String url = "http://localhost/phpmyadmin/db_structure.php?db=reto3dam" + usuario
-				                                     + "&password=" + password;
+		String url = "jdbc:mysql://localhost:3306/reto3db?user=" + usuario+ "&password=" + password;
 		try {
 			con = DriverManager.getConnection(url);
 			if (con != null) {

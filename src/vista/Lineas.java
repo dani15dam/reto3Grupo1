@@ -27,7 +27,7 @@ public class Lineas {
 	private JFrame lineas;
 	private JButton btnSiguienteLineas;
 	private JComboBox tipoLinea;
-	private JComboBox comboBoxLineas;
+	private JComboBox <Paradas>comboBoxLineas;
 	
 	//get-set
 	
@@ -134,9 +134,12 @@ public class Lineas {
 		
 		comboBoxLineas = new JComboBox();
 		comboBoxLineas.setBounds(137, 87, 156, 38);
+		
 		panel.add(comboBoxLineas);
 		
 		
 		
 	}
+
+
 }

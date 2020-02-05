@@ -8,9 +8,11 @@ import java.util.ArrayList;
 import javax.swing.ComboBoxModel;
 
 import conexion.Conexion;
+import modelo.LineasBBDD;
 import modelo.LineasBus;
 import modelo.Paradas;
 import modelo.ParadasBBDD;
+import vista.Cuenta;
 import vista.Ida;
 import vista.IdaVuelta;
 import vista.Lineas;
@@ -22,9 +24,9 @@ public class ControladorLineas implements ActionListener {
 	public ControladorLineas(Lineas pLineas) {
 
 		this.ventanaLinea = pLineas;
-
 		inicializarControlador();
 		rellenarComboParadas();
+
 
 	}
 
@@ -45,12 +47,29 @@ public class ControladorLineas implements ActionListener {
 		switch (e.getActionCommand()) {
 
 		case "btnSiguiente":
+		String tipo = ventanaLinea.getTipoLinea().getSelectedItem().toString();
+		
+		if (tipo.equalsIgnoreCase("ida")) {
+			Ida ida = new Ida();
+			ida.getIda().setVisible(true);
 
-			String tipo = ventanaLinea.getTipoLinea().getSelectedItem().toString();
+			ControladorIda controladorida = new ControladorIda(ida ,this.ventanaLinea);
+			ventanaLinea.getLineas().dispose();
+		}else {
+			IdaVuelta idaVuelta = new IdaVuelta();
+			idaVuelta.getIdaVuelta().setVisible(true);
+
+			ControladorIdaVuelta controladorida = new ControladorIdaVuelta(idaVuelta,this.ventanaLinea);
+			ventanaLinea.getLineas().dispose();
+		}
+			
+
+			//String tipo = ventanaLinea.getTipoLinea().getSelectedItem().toString();
 
 //			if (tipo.equalsIgnoreCase("ida")) {
 //				ventanaLinea.getLineas().setVisible(false);
-//				Ida d;
+			
+//			Ida d;
 //				if (ventanaLinea.getRbBilbaoDonostia().isSelected())
 //					d = new Ida("Bilbao-Donostia");
 //				else if (ventanaLinea.getRbBilbaoMunguia().isSelected())
@@ -60,8 +79,8 @@ public class ControladorLineas implements ActionListener {
 //				d.getIda().setVisible(true);
 //
 //			} else {
-//				ventanaLinea.getLineas().setVisible(false);
-//				IdaVuelta f;
+//			ventanaLinea.getLineas().setVisible(false);
+//			IdaVuelta f;
 //				if (ventanaLinea.getRbBilbaoDonostia().isSelected())
 //					f = new IdaVuelta("Bilbao-Donostia");
 //				else if (ventanaLinea.getRbBilbaoMunguia().isSelected())
@@ -70,38 +89,37 @@ public class ControladorLineas implements ActionListener {
 //					f = new IdaVuelta("Bilbao-Gernika");
 //				f.getIdaVuelta().setVisible(true);
 //
-//			}
+//		}
 
 			break;
 
 		}
 	}
 
+
 	private void rellenarComboParadas() {
 		
+		ArrayList<LineasBus> linea = new ArrayList<LineasBus>();
 		
-		ArrayList<Paradas> paradas = new ArrayList<Paradas>();
-		
-		LineasBus linea = (LineasBus) this.ventanaLinea.getComboBoxLineas().getSelectedItem();
-		 
 
 		try {
 			
-			paradas = ParadasBBDD.obtenerParadas(linea.getNombreBus());
+			linea = LineasBBDD.obtenerLineas();
 
-			for (int i = 0; i < paradas.size(); i++) {
+			for (int i = 0; i < linea.size(); i++) {
 
-				this.ventanaLinea.getComboBoxLineas().addItem(paradas.get(i));
+				this.ventanaLinea.getComboBoxLineas().addItem(linea.get(i));
 				
 
 			}
 
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+		
 			e.printStackTrace();
 		}
 
 	}
+	
 
 }
 

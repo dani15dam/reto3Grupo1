@@ -2,18 +2,37 @@ package controladores;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 import java.util.ArrayList;
+
+import modelo.LineasBus;
+import modelo.Paradas;
+import modelo.ParadasBBDD;
 import vista.Cuenta;
 import vista.Ida;
+import vista.Lineas;
 
 public class ControladorIda implements ActionListener {
 
 	private Ida ventanaIda;
-
-	public ControladorIda(Ida ptrayecto) {
-
-		this.ventanaIda = ptrayecto;
+	private Lineas ventanaLinea;
+	
+	public ControladorIda(Ida pTrayecto) {
+		this.ventanaIda = pTrayecto;
+		
 		inicializarControlador();
+
+	}
+	
+
+	public ControladorIda(Ida pTrayecto ,Lineas pVentanaLinea) {
+
+		this.ventanaIda = pTrayecto;
+		this.ventanaLinea=pVentanaLinea;
+		
+		inicializarControlador();
+		
+		rellenarListaParadas();
 
 	}
 	
@@ -23,7 +42,7 @@ public class ControladorIda implements ActionListener {
 
 	public void inicializarControlador() {
 
-		// inicializar botones
+	
 		this.ventanaIda.getBtnSiguienteIda().addActionListener(this);
 		this.ventanaIda.getBtnSiguienteIda().setActionCommand("siguiente");
 
@@ -55,33 +74,44 @@ public class ControladorIda implements ActionListener {
 			break;
 
 		case "cancelar":
+			
+			Lineas lineas = new Lineas();
+			lineas.getLineas().setVisible(true);
 
+			ControladorLineas controladorLineas = new ControladorLineas(lineas);
+			ventanaIda.getIda().dispose();
+
+			
 			break;
 
 		}
 	}
 
-	public ArrayList<String> ParadasLinea1() {
-		ArrayList<String> listaParadasLinea1 = new ArrayList<>();
-		listaParadasLinea1.add("parada1");
-		listaParadasLinea1.add("parada2");
-		return listaParadasLinea1;
+	private void rellenarListaParadas() {
+		
+		ArrayList<Paradas> paradas= new ArrayList<Paradas>();
+		LineasBus linea=(LineasBus) this.ventanaLinea.getComboBoxLineas().getSelectedItem();
+		
+		try {			
+			paradas = ParadasBBDD.obtenerParadas(linea.getCod_lineas());
+			
+			for (int i = 0; i < paradas.size(); i++) {
+				
+				this.ventanaIda.getTrayectoIda().addItem(paradas.get(i));
+				this.ventanaIda.getCbDestinoIda().addItem(paradas.get(i));
+				
 
-	}
+			}
 
-	public ArrayList<String> ParadasLinea2() {
-		ArrayList<String> listaParadasLinea2 = new ArrayList<String>();
-		listaParadasLinea2.add("parada3");
-		listaParadasLinea2.add("parada4");
-		return listaParadasLinea2;
-	}
-
-	public ArrayList<String> ParadasLinea3() {
-		ArrayList<String> listaParadasLinea3 = new ArrayList<String>();
-		listaParadasLinea3.add("parada5");
-		listaParadasLinea3.add("parada6");
-		return listaParadasLinea3;
+		}catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		
+		}
 	}
 	
-
+		
+	
 }
+	
+
