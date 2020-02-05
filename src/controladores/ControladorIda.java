@@ -5,6 +5,9 @@ import java.awt.event.ActionListener;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import modelo.Hora;
+import modelo.HoraBBDD;
+import modelo.LineasBBDD;
 import modelo.LineasBus;
 import modelo.Paradas;
 import modelo.ParadasBBDD;
@@ -16,6 +19,7 @@ public class ControladorIda implements ActionListener {
 
 	private Ida ventanaIda;
 	private Lineas ventanaLinea;
+	private Hora ventanaHora;
 	
 	public ControladorIda(Ida pTrayecto) {
 		this.ventanaIda = pTrayecto;
@@ -33,6 +37,19 @@ public class ControladorIda implements ActionListener {
 		inicializarControlador();
 		
 		rellenarListaParadas();
+
+	}
+	public ControladorIda(Ida pTrayecto ,Lineas pVentanaLinea, Hora pHora) {
+
+		this.ventanaIda = pTrayecto;
+		this.ventanaLinea=pVentanaLinea;
+		this.ventanaHora=pHora;
+		
+		inicializarControlador();
+		
+		rellenarListaParadas();
+		
+		rellenarHoras();
 
 	}
 	
@@ -109,8 +126,33 @@ public class ControladorIda implements ActionListener {
 		
 		}
 	}
-	
 		
+
+		
+	
+	private void rellenarHoras() {
+		
+		ArrayList<Hora> hora= new ArrayList<Hora>();
+		
+		LineasBus linea=(LineasBus) this.ventanaLinea.getComboBoxLineas().getSelectedItem();
+		
+		try {			
+	
+			hora = HoraBBDD.obtenerHoras(linea.getCod_lineas());
+
+			for (int i = 0; i < hora.size(); i++) {
+
+				this.ventanaIda.getHoraIda().addItem(hora.get(i).getHora());
+				
+
+			}
+
+		} catch (SQLException e) {
+		
+			e.printStackTrace();
+		}
+
+	}
 	
 }
 	

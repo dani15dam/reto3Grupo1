@@ -81,6 +81,12 @@ public ControladorIdaVuelta(){
 
 
 		case "cancelar":
+			Lineas lineas = new Lineas();
+			lineas.getLineas().setVisible(true);
+
+			ControladorLineas controladorLineas = new ControladorLineas(lineas);
+			ventanaIdaVuelta.getIdaVuelta().dispose();
+
 
 			break;
 
@@ -98,7 +104,7 @@ public ControladorIdaVuelta(){
 			for (int i = 0; i < paradas.size(); i++) {
 				
 				this.ventanaIdaVuelta.getTrayectoIda2().addItem(paradas.get(i));
-				
+				this.ventanaIdaVuelta.getComboBoxIdaVueltaDestino().addItem(paradas.get(i));
 
 			}
 

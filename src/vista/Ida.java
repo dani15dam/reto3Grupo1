@@ -11,19 +11,21 @@ import javax.swing.JButton;
 import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import com.toedter.calendar.JCalendar;
+import com.toedter.calendar.JDateChooser;
 
 public class Ida {
 
 	private JFrame Ida;
 	private JTextField precioIda;
 	private JTextField totalIda;
-	private JComboBox<String> fechaIda;
 	private JComboBox<String> trayectoIda;
 	private JComboBox<String> horaIda;
 	private JComboBox<String> cantidadIda;
 	private JComboBox<String> cbDestinoIda;
 	private JButton btnSiguienteIda;
 	private JButton btnCancelarIda;
+	private JDateChooser dateChooserFechaIda;
 
 	/**
 	 * Launch the application.
@@ -71,38 +73,35 @@ public class Ida {
 		panel.setLayout(null);
 
 		trayectoIda = new JComboBox<>();
-		trayectoIda.setBounds(20, 86, 73, 20);
+		trayectoIda.setBounds(20, 86, 133, 20);
 		panel.add(trayectoIda);
 
-		fechaIda = new JComboBox<>();
-		fechaIda.setBounds(103, 86, 67, 20);
-		panel.add(fechaIda);
-
 		horaIda = new JComboBox<String>();
-		horaIda.setBounds(180, 86, 55, 20);
+		horaIda.setBounds(140, 137, 55, 20);
 		panel.add(horaIda);
 
 		cantidadIda = new JComboBox();
-		cantidadIda.setBounds(245, 86, 40, 20);
+		cantidadIda.setBounds(218, 137, 40, 20);
+		cantidadIda.setModel(new DefaultComboBoxModel(new String[] { "1", "2","3","4","5","6","7","8","9" }));
 		panel.add(cantidadIda);
 
 
 		JLabel lblPrecio = new JLabel("precio");
-		lblPrecio.setBounds(295, 89, 46, 14);
+		lblPrecio.setBounds(282, 140, 46, 14);
 		panel.add(lblPrecio);
 
 		precioIda = new JTextField();
-		precioIda.setBounds(338, 86, 86, 20);
+		precioIda.setBounds(326, 137, 86, 20);
 		panel.add(precioIda);
 		precioIda.setColumns(10);
 
 		totalIda = new JTextField();
-		totalIda.setBounds(326, 128, 86, 20);
+		totalIda.setBounds(326, 168, 86, 20);
 		panel.add(totalIda);
 		totalIda.setColumns(10);
 
 		JLabel lblTotal = new JLabel("total");
-		lblTotal.setBounds(295, 131, 46, 14);
+		lblTotal.setBounds(295, 171, 46, 14);
 		panel.add(lblTotal);
 
 		btnSiguienteIda = new JButton("siguiente");
@@ -119,8 +118,12 @@ public class Ida {
 		panel.add(lblIda);
 		
 		cbDestinoIda = new JComboBox();
-		cbDestinoIda.setBounds(20, 128, 73, 20);
+		cbDestinoIda.setBounds(197, 86, 114, 20);
 		panel.add(cbDestinoIda);
+		
+		dateChooserFechaIda = new JDateChooser();
+		dateChooserFechaIda.setBounds(20, 134, 95, 20);
+		panel.add(dateChooserFechaIda);
 	}
 
 	public JComboBox getCbDestinoIda() {
@@ -131,13 +134,6 @@ public class Ida {
 		this.cbDestinoIda = cbDestinoIda;
 	}
 
-	public JComboBox getFechaIda() {
-		return fechaIda;
-	}
-
-	public void setFechaIda(JComboBox fechaIda) {
-		this.fechaIda = fechaIda;
-	}
 
 	public JComboBox getTrayectoIda() {
 		return trayectoIda;
