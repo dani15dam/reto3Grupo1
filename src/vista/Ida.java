@@ -7,9 +7,12 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import controladores.ControladorIda;
+import modelo.Fecha;
+
 import javax.swing.JButton;
 import java.awt.Font;
 import java.awt.event.ActionListener;
+import java.util.Date;
 import java.awt.event.ActionEvent;
 import com.toedter.calendar.JCalendar;
 import com.toedter.calendar.JDateChooser;
@@ -26,7 +29,8 @@ public class Ida {
 	private JButton btnSiguienteIda;
 	private JButton btnCancelarIda;
 	private JDateChooser dateChooserFechaIda;
-
+	Fecha fechas=new Fecha();
+	
 	/**
 	 * Launch the application.
 	 */
@@ -63,12 +67,12 @@ public class Ida {
 	 */
 	private void initialize() {
 		Ida = new JFrame();
-		Ida.setBounds(100, 100, 450, 300);
+		Ida.setBounds(100, 100, 468, 375);
 		Ida.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		Ida.getContentPane().setLayout(null);
 
 		JPanel panel = new JPanel();
-		panel.setBounds(0, 0, 434, 250);
+		panel.setBounds(0, 0, 452, 325);
 		Ida.getContentPane().add(panel);
 		panel.setLayout(null);
 
@@ -77,51 +81,53 @@ public class Ida {
 		panel.add(trayectoIda);
 
 		horaIda = new JComboBox<String>();
-		horaIda.setBounds(140, 137, 55, 20);
+		horaIda.setBounds(175, 137, 90, 20);
 		panel.add(horaIda);
 
 		cantidadIda = new JComboBox();
-		cantidadIda.setBounds(218, 137, 40, 20);
+		cantidadIda.setBounds(125, 137, 40, 20);
 		cantidadIda.setModel(new DefaultComboBoxModel(new String[] { "1", "2","3","4","5","6","7","8","9" }));
 		panel.add(cantidadIda);
 
 
 		JLabel lblPrecio = new JLabel("precio");
-		lblPrecio.setBounds(282, 140, 46, 14);
+		lblPrecio.setBounds(284, 140, 46, 14);
 		panel.add(lblPrecio);
 
 		precioIda = new JTextField();
-		precioIda.setBounds(326, 137, 86, 20);
+		precioIda.setBounds(340, 137, 86, 20);
 		panel.add(precioIda);
 		precioIda.setColumns(10);
 
 		totalIda = new JTextField();
-		totalIda.setBounds(326, 168, 86, 20);
+		totalIda.setBounds(340, 178, 86, 20);
 		panel.add(totalIda);
 		totalIda.setColumns(10);
 
 		JLabel lblTotal = new JLabel("total");
-		lblTotal.setBounds(295, 171, 46, 14);
+		lblTotal.setBounds(284, 181, 46, 14);
 		panel.add(lblTotal);
 
 		btnSiguienteIda = new JButton("siguiente");
-		btnSiguienteIda.setBounds(323, 199, 89, 23);
+		btnSiguienteIda.setBounds(350, 291, 89, 23);
 		panel.add(btnSiguienteIda);
+		
 
 		btnCancelarIda = new JButton("Cancelar");
-		btnCancelarIda.setBounds(20, 199, 89, 23);
+		btnCancelarIda.setBounds(10, 291, 89, 23);
 		panel.add(btnCancelarIda);
 
 		JLabel lblIda = new JLabel("Ida");
 		lblIda.setFont(new Font("Tahoma", Font.ITALIC, 23));
-		lblIda.setBounds(203, 11, 60, 28);
+		lblIda.setBounds(165, 11, 60, 28);
 		panel.add(lblIda);
 		
 		cbDestinoIda = new JComboBox();
-		cbDestinoIda.setBounds(197, 86, 114, 20);
+		cbDestinoIda.setBounds(312, 86, 114, 20);
 		panel.add(cbDestinoIda);
 		
 		dateChooserFechaIda = new JDateChooser();
+		dateChooserFechaIda.setDate(new Date());
 		dateChooserFechaIda.setBounds(20, 134, 95, 20);
 		panel.add(dateChooserFechaIda);
 	}
@@ -174,4 +180,23 @@ public class Ida {
 	public void setBtnCancelarIda(JButton btnCancelarIda) {
 		this.btnCancelarIda = btnCancelarIda;
 	}
+
+	public JDateChooser getDateChooserFechaIda() {
+		return dateChooserFechaIda;
+	}
+
+	public void setDateChooserFechaIda(JDateChooser dateChooserFechaIda) {
+		this.dateChooserFechaIda = dateChooserFechaIda;
+	}
+
+	@Override
+	public String toString() {
+		
+		return "Ida [dateChooserFechaIda=" + dateChooserFechaIda + "]";
+	}
+
+	
+
+
+	
 }

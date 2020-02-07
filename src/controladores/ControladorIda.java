@@ -4,7 +4,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 
+import javax.swing.JOptionPane;
+
+import modelo.Fecha;
 import modelo.Hora;
 import modelo.HoraBBDD;
 import modelo.LineasBBDD;
@@ -20,25 +24,20 @@ public class ControladorIda implements ActionListener {
 	private Ida ventanaIda;
 	private Lineas ventanaLinea;
 	private Hora ventanaHora;
+	private Fecha fechaActual;
 	
+	private Fecha fechas=new Fecha();
+
 	public ControladorIda(Ida pTrayecto) {
-		this.ventanaIda = pTrayecto;
 		
+		this.ventanaIda = pTrayecto;
+	
 		inicializarControlador();
+		
+	
 
 	}
 	
-
-	public ControladorIda(Ida pTrayecto ,Lineas pVentanaLinea) {
-
-		this.ventanaIda = pTrayecto;
-		this.ventanaLinea=pVentanaLinea;
-		
-		inicializarControlador();
-		
-		rellenarListaParadas();
-
-	}
 	public ControladorIda(Ida pTrayecto ,Lineas pVentanaLinea, Hora pHora) {
 
 		this.ventanaIda = pTrayecto;
@@ -50,6 +49,9 @@ public class ControladorIda implements ActionListener {
 		rellenarListaParadas();
 		
 		rellenarHoras();
+		
+		deshabilitarFecha();
+		
 
 	}
 	
@@ -77,7 +79,19 @@ public class ControladorIda implements ActionListener {
 
 		switch (botonPulsado) {
 		case "siguiente":
+			
+			
+		
+			
+			JOptionPane.showMessageDialog(null, "la fecha: "+fechas.getFecha(ventanaIda.getDateChooserFechaIda()));
+			
 
+			
+			
+			
+			
+			
+			
 			Cuenta cuenta = new Cuenta();
 			cuenta.getCuenta().setVisible(true);
 
@@ -104,7 +118,7 @@ public class ControladorIda implements ActionListener {
 		}
 	}
 
-	private void rellenarListaParadas() {
+	public void rellenarListaParadas() {
 		
 		ArrayList<Paradas> paradas= new ArrayList<Paradas>();
 		LineasBus linea=(LineasBus) this.ventanaLinea.getComboBoxLineas().getSelectedItem();
@@ -130,7 +144,7 @@ public class ControladorIda implements ActionListener {
 
 		
 	
-	private void rellenarHoras() {
+	public void rellenarHoras() {
 		
 		ArrayList<Hora> hora= new ArrayList<Hora>();
 		
@@ -152,6 +166,9 @@ public class ControladorIda implements ActionListener {
 			e.printStackTrace();
 		}
 
+	}
+	public void deshabilitarFecha() {
+		this.ventanaIda.getDateChooserFechaIda().setMinSelectableDate(new Date());
 	}
 	
 }

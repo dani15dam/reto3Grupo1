@@ -26,8 +26,8 @@ public class HoraBBDD {
 	public static ArrayList<Hora> obtenerHoras(String cod_linea) throws SQLException{
 		
 		Connection con= Conexion.conectar();
-		String sql="SELECT Hora FROM linea_autobuses where ='"+cod_linea+"' ";
-		
+		String sql="SELECT DISTINCT Hora FROM linea_autobus where cod_linea='A0651'AND Hora > SYSDATE()";
+	
 		PreparedStatement ps=con.prepareStatement(sql);
 		
 		ResultSet rs=ps.executeQuery();

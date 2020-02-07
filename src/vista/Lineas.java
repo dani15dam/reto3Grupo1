@@ -105,12 +105,12 @@ public class Lineas {
 	 */
 	private void initialize() {
 		lineas = new JFrame();
-		lineas.setBounds(100, 100, 450, 300);
+		lineas.setBounds(100, 100, 450, 352);
 		lineas.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		lineas.getContentPane().setLayout(null);
 
 		JPanel panel = new JPanel();
-		panel.setBounds(0, 0, 434, 250);
+		panel.setBounds(0, 0, 434, 302);
 		lineas.getContentPane().add(panel);
 		panel.setLayout(null);
 
@@ -120,16 +120,16 @@ public class Lineas {
 
 		tipoLinea = new JComboBox();
 		tipoLinea.setModel(new DefaultComboBoxModel(new String[] { "ida", "ida-vuelta" }));
-		tipoLinea.setBounds(304, 158, 62, 20);
+		tipoLinea.setBounds(349, 96, 62, 20);
 		panel.add(tipoLinea);
 
 		btnCancelarLineas = new JButton("cancelar");
-		btnCancelarLineas.setBounds(39, 204, 89, 23);
+		btnCancelarLineas.setBounds(10, 253, 89, 23);
 		panel.add(btnCancelarLineas);
 		
 		
 		btnSiguienteLineas = new JButton("siguiente");
-		btnSiguienteLineas.setBounds(317, 204, 89, 23);
+		btnSiguienteLineas.setBounds(335, 253, 89, 23);
 		panel.add(btnSiguienteLineas);
 		
 		comboBoxLineas = new JComboBox();

@@ -14,6 +14,7 @@ import controladores.ControladorIdaVuelta;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.util.Date;
 import java.awt.event.ActionEvent;
 import com.toedter.calendar.JDateChooser;
 import com.jgoodies.forms.factories.DefaultComponentFactory;
@@ -29,6 +30,10 @@ public class IdaVuelta {
 	private JComboBox <String> trayectoIda2;
 	private JComboBox comboBoxIdaVueltaDestino;
 	private JComboBox cantidadIda2;
+	private JComboBox horaIda;
+	private JComboBox horaVuelta;
+	private JDateChooser dateChooserIda;
+	private JDateChooser dateChooserVuelta;
 
 	/**
 	 * Launch the application.
@@ -60,12 +65,12 @@ public class IdaVuelta {
 	 */
 	private void initialize() {
 		idaVuelta = new JFrame();
-		idaVuelta.setBounds(100, 100, 551, 331);
+		idaVuelta.setBounds(100, 100, 551, 384);
 		idaVuelta.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		idaVuelta.getContentPane().setLayout(null);
 		
 		JPanel panel = new JPanel();
-		panel.setBounds(0, 0, 535, 292);
+		panel.setBounds(0, 0, 535, 334);
 		idaVuelta.getContentPane().add(panel);
 		panel.setLayout(null);
 		
@@ -74,100 +79,82 @@ public class IdaVuelta {
 		panel.add(lblIdaYVuelta);
 		
 		trayectoIda2 = new JComboBox<>();
-		trayectoIda2.setBounds(52, 88, 134, 20);
+		trayectoIda2.setBounds(49, 59, 134, 20);
 		panel.add(trayectoIda2);
 		
-		JComboBox horaIda2 = new JComboBox();
-		horaIda2.setBounds(297, 151, 68, 20);
-		panel.add(horaIda2);
+		 horaVuelta = new JComboBox();
+		horaVuelta.setBounds(291, 122, 68, 20);
+		panel.add(horaVuelta);
 		
 		cantidadIda2 = new JComboBox();
-		cantidadIda2.setBounds(273, 195, 38, 20);
+		cantidadIda2.setBounds(271, 228, 38, 20);
 		cantidadIda2.setModel(new DefaultComboBoxModel(new String[] { "1", "2","3","4","5","6","7","8","9" }));
 		panel.add(cantidadIda2);
 		
-		JComboBox comboBox_6 = new JComboBox();
-		comboBox_6.setBounds(97, 151, 69, 20);
-		panel.add(comboBox_6);
+		horaIda = new JComboBox();
+		horaIda.setBounds(83, 122, 69, 20);
+		panel.add(horaIda);
 		
 		JLabel lblNewLabel = new JLabel("precio");
-		lblNewLabel.setBounds(396, 91, 46, 14);
+		lblNewLabel.setBounds(408, 62, 46, 14);
 		panel.add(lblNewLabel);
 		
 		precioIda2 = new JTextField();
-		precioIda2.setBounds(439, 88, 66, 20);
+		precioIda2.setBounds(459, 59, 66, 20);
 		panel.add(precioIda2);
 		precioIda2.setColumns(10);
 		
 		totalIdaVuelta = new JTextField();
-		totalIdaVuelta.setBounds(225, 226, 86, 20);
+		totalIdaVuelta.setBounds(217, 259, 86, 20);
 		panel.add(totalIdaVuelta);
 		totalIdaVuelta.setColumns(10);
 		
-//		ControladorIdaVuelta controladorIdaVuelta = new ControladorIdaVuelta();
-//		switch (destino) {
-//		case "Bilbao-Donostia":
-//			trayectoIda2.setModel(new DefaultComboBoxModel(controladorIdaVuelta .ParadasLinea1().toArray()));
-//			trayectoVuelta.setModel(new DefaultComboBoxModel(controladorIdaVuelta .ParadasLinea1().toArray()));
-//			break;
-//
-//		case "Bilbao-Mungia":
-//
-//			trayectoIda2.setModel(new DefaultComboBoxModel(controladorIdaVuelta.ParadasLinea2().toArray()));
-//			trayectoVuelta.setModel(new DefaultComboBoxModel(controladorIdaVuelta .ParadasLinea1().toArray()));
-//			break;
-//		case "Bilbao-Gernika":
-//			trayectoIda2.setModel(new DefaultComboBoxModel(controladorIdaVuelta.ParadasLinea3().toArray()));
-//			trayectoVuelta.setModel(new DefaultComboBoxModel(controladorIdaVuelta .ParadasLinea1().toArray()));
-//			break;
-//
-//		default:
-//			throw new IllegalArgumentException("Unexpected value: " + destino);
-//			
-//		}
+
 		
 		JLabel lblTotal = new JLabel("total");
-		lblTotal.setBounds(180, 229, 46, 14);
+		lblTotal.setBounds(185, 262, 46, 14);
 		panel.add(lblTotal);
 		
 		btnSiguienteIdaVuelta = new JButton("siguiente");
-		btnSiguienteIdaVuelta.setBounds(436, 258, 89, 23);
+		btnSiguienteIdaVuelta.setBounds(436, 300, 89, 23);
 		panel.add(btnSiguienteIdaVuelta);
 		
 		btnCancelarIdaVuelta = new JButton("cancelar");
-		btnCancelarIdaVuelta.setBounds(14, 258, 89, 23);
+		btnCancelarIdaVuelta.setBounds(14, 311, 89, 23);
 		panel.add(btnCancelarIdaVuelta);
 		
 		JLabel lblVuelta = new JLabel("Vuelta");
-		lblVuelta.setBounds(246, 122, 46, 14);
+		lblVuelta.setBounds(239, 97, 46, 14);
 		panel.add(lblVuelta);
 		
-		JDateChooser dateChooserIda = new JDateChooser();
-		dateChooserIda.setBounds(88, 119, 95, 20);
+		dateChooserIda = new JDateChooser();
+		dateChooserIda.setDate(new Date());
+		dateChooserIda.setBounds(73, 91, 95, 20);
 		panel.add(dateChooserIda);
 		
-		JDateChooser dateChooserVuelta = new JDateChooser();
-		dateChooserVuelta.setBounds(287, 119, 95, 20);
+		dateChooserVuelta = new JDateChooser();
+		dateChooserVuelta.setDate(new Date());
+		dateChooserVuelta.setBounds(281, 91, 95, 20);
 		panel.add(dateChooserVuelta);
 		
 		comboBoxIdaVueltaDestino = new JComboBox();
-		comboBoxIdaVueltaDestino.setBounds(258, 88, 128, 20);
+		comboBoxIdaVueltaDestino.setBounds(271, 59, 128, 20);
 		panel.add(comboBoxIdaVueltaDestino);
 		
 		JLabel lblNewLabel_1 = new JLabel("Destino");
-		lblNewLabel_1.setBounds(208, 91, 46, 14);
+		lblNewLabel_1.setBounds(208, 62, 46, 14);
 		panel.add(lblNewLabel_1);
 		
 		JLabel lblNewLabel_2 = new JLabel("Origen");
-		lblNewLabel_2.setBounds(14, 91, 46, 14);
+		lblNewLabel_2.setBounds(14, 62, 46, 14);
 		panel.add(lblNewLabel_2);
 		
 		JLabel lblNewLabel_3 = new JLabel("ida");
-		lblNewLabel_3.setBounds(53, 122, 46, 14);
+		lblNewLabel_3.setBounds(45, 97, 46, 14);
 		panel.add(lblNewLabel_3);
 		
 		JLabel lblNewLabel_4 = new JLabel("Cantidad");
-		lblNewLabel_4.setBounds(217, 198, 46, 14);
+		lblNewLabel_4.setBounds(215, 231, 46, 14);
 		panel.add(lblNewLabel_4);
 	}
 
@@ -212,4 +199,37 @@ public class IdaVuelta {
 	public void setTrayectoIda2(JComboBox trayectoIda2) {
 		this.trayectoIda2 = trayectoIda2;
 	}
+
+	public JComboBox getHoraIda() {
+		return horaIda;
+	}
+
+	public void setHoraIda(JComboBox horaIda) {
+		this.horaIda = horaIda;
+	}
+
+	public JComboBox getHoraVuelta() {
+		return horaVuelta;
+	}
+
+	public void setHoraVuelta(JComboBox horaVuelta) {
+		this.horaVuelta = horaVuelta;
+	}
+
+	public JDateChooser getDateChooserIda() {
+		return dateChooserIda;
+	}
+
+	public void setDateChooserIda(JDateChooser dateChooserIda) {
+		this.dateChooserIda = dateChooserIda;
+	}
+
+	public JDateChooser getDateChooserVuelta() {
+		return dateChooserVuelta;
+	}
+
+	public void setDateChooserVuelta(JDateChooser dateChooserVuelta) {
+		this.dateChooserVuelta = dateChooserVuelta;
+	}
+	
 }
