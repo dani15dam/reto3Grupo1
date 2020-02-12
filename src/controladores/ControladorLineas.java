@@ -13,15 +13,17 @@ import modelo.LineasBBDD;
 import modelo.LineasBus;
 import modelo.Paradas;
 import modelo.ParadasBBDD;
-import vista.Cuenta;
+import modelo.Precio;
 import vista.Ida;
 import vista.IdaVuelta;
+import vista.Inicio;
 import vista.Lineas;
 
 public class ControladorLineas implements ActionListener {
 
 	private Lineas ventanaLinea;
 	private Hora ventanaHoras;
+	private Precio precio;
 
 	public ControladorLineas(Lineas pLineas) {
 
@@ -29,75 +31,77 @@ public class ControladorLineas implements ActionListener {
 		inicializarControlador();
 		rellenarComboParadas();
 
-
 	}
 
 	public void inicializarControlador() {
 
 		this.ventanaLinea.getBtnSiguienteLineas().addActionListener(this);
 		this.ventanaLinea.getBtnSiguienteLineas().setActionCommand("btnSiguiente");
-//		
-//		this.ventanaTrayecto.getBtnSalir().addActionListener(this);
-//		this.ventanaTrayecto.getBtnSalir().setActionCommand("btnSalir");
-//
+		
+		this.ventanaLinea.getBtnCancelarLineas().addActionListener(this);
+		this.ventanaLinea.getBtnCancelarLineas().setActionCommand("btnCancelarLineas");
+
 
 	}
 
 	@Override
-	public void actionPerformed(ActionEvent e) { 
+	public void actionPerformed(ActionEvent e) {
 
 		switch (e.getActionCommand()) {
 
 		case "btnSiguiente":
-		String tipo = ventanaLinea.getTipoLinea().getSelectedItem().toString();
-		
-		if (tipo.equalsIgnoreCase("ida")) {
-			Ida ida = new Ida();
-			ida.getIda().setVisible(true);
+			String tipo = ventanaLinea.getTipoLinea().getSelectedItem().toString();
 
-		
-			ControladorIda controladorida = new ControladorIda(ida ,this.ventanaLinea,ventanaHoras);
-			ventanaLinea.getLineas().dispose();
-		}else {
-			IdaVuelta idaVuelta = new IdaVuelta();
-			idaVuelta.getIdaVuelta().setVisible(true);
+			if (tipo.equalsIgnoreCase("ida")) {
+				Ida ida = new Ida();
+				ida.getIda().setVisible(true);
 
-			ControladorIdaVuelta controladorida = new ControladorIdaVuelta(idaVuelta,this.ventanaLinea,ventanaHoras);
-			ventanaLinea.getLineas().dispose();
-		}
-			
+				ControladorIda controladorida = new ControladorIda(ida, this.ventanaLinea, ventanaHoras);
+				ventanaLinea.getLineas().dispose();
+			} else {
+				IdaVuelta idaVuelta = new IdaVuelta();
+				idaVuelta.getIdaVuelta().setVisible(true);
+
+				ControladorIdaVuelta controladorida = new ControladorIdaVuelta(idaVuelta, this.ventanaLinea, ventanaHoras);
+				ventanaLinea.getLineas().dispose();
+			}
+
 			break;
+			
+		case"btnCancelarLineas":
+			
+			Inicio inicio = new Inicio();
+			inicio.setVisible(true);
+
+	
+			ventanaLinea.getLineas().dispose();
+
+		
+		
+		break;
 
 		}
 	}
 
-
 	private void rellenarComboParadas() {
-		
+
 		ArrayList<LineasBus> linea = new ArrayList<LineasBus>();
-		
 
 		try {
-			
+
 			linea = LineasBBDD.obtenerLineas();
 
 			for (int i = 0; i < linea.size(); i++) {
 
 				this.ventanaLinea.getComboBoxLineas().addItem(linea.get(i));
-				
 
 			}
 
 		} catch (SQLException e) {
-		
+
 			e.printStackTrace();
 		}
 
 	}
-	
 
 }
-
-	
-
-

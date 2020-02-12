@@ -16,6 +16,7 @@ import java.util.Date;
 import java.awt.event.ActionEvent;
 import com.toedter.calendar.JCalendar;
 import com.toedter.calendar.JDateChooser;
+import java.awt.Color;
 
 public class Ida {
 
@@ -67,66 +68,82 @@ public class Ida {
 	 */
 	private void initialize() {
 		Ida = new JFrame();
+		Ida.getContentPane().setBackground(Color.WHITE);
 		Ida.setBounds(100, 100, 468, 375);
 		Ida.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		Ida.getContentPane().setLayout(null);
 
 		JPanel panel = new JPanel();
+		panel.setBackground(Color.WHITE);
 		panel.setBounds(0, 0, 452, 325);
 		Ida.getContentPane().add(panel);
 		panel.setLayout(null);
 
 		trayectoIda = new JComboBox<>();
+		trayectoIda.setBackground(Color.WHITE);
 		trayectoIda.setBounds(20, 86, 133, 20);
 		panel.add(trayectoIda);
 
 		horaIda = new JComboBox<String>();
+		horaIda.setBackground(Color.WHITE);
 		horaIda.setBounds(175, 137, 90, 20);
 		panel.add(horaIda);
 
 		cantidadIda = new JComboBox();
+		cantidadIda.setBackground(Color.WHITE);
 		cantidadIda.setBounds(125, 137, 40, 20);
 		cantidadIda.setModel(new DefaultComboBoxModel(new String[] { "1", "2","3","4","5","6","7","8","9" }));
 		panel.add(cantidadIda);
 
 
 		JLabel lblPrecio = new JLabel("precio");
-		lblPrecio.setBounds(284, 140, 46, 14);
+		lblPrecio.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblPrecio.setBounds(294, 141, 46, 14);
 		panel.add(lblPrecio);
 
 		precioIda = new JTextField();
+		precioIda.setBackground(Color.WHITE);
 		precioIda.setBounds(340, 137, 86, 20);
 		panel.add(precioIda);
 		precioIda.setColumns(10);
+		precioIda.setEditable(false);
 
 		totalIda = new JTextField();
+		totalIda.setBackground(Color.WHITE);
 		totalIda.setBounds(340, 178, 86, 20);
 		panel.add(totalIda);
 		totalIda.setColumns(10);
+		totalIda.setEditable(false);
 
 		JLabel lblTotal = new JLabel("total");
-		lblTotal.setBounds(284, 181, 46, 14);
+		lblTotal.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblTotal.setBounds(294, 182, 46, 14);
 		panel.add(lblTotal);
 
 		btnSiguienteIda = new JButton("siguiente");
+		btnSiguienteIda.setBackground(Color.WHITE);
 		btnSiguienteIda.setBounds(350, 291, 89, 23);
 		panel.add(btnSiguienteIda);
 		
 
 		btnCancelarIda = new JButton("Cancelar");
+		btnCancelarIda.setBackground(Color.WHITE);
 		btnCancelarIda.setBounds(10, 291, 89, 23);
 		panel.add(btnCancelarIda);
 
 		JLabel lblIda = new JLabel("Ida");
+		lblIda.setForeground(new Color(165, 42, 42));
 		lblIda.setFont(new Font("Tahoma", Font.ITALIC, 23));
-		lblIda.setBounds(165, 11, 60, 28);
+		lblIda.setBounds(205, 11, 60, 28);
 		panel.add(lblIda);
 		
 		cbDestinoIda = new JComboBox();
+		cbDestinoIda.setBackground(Color.WHITE);
 		cbDestinoIda.setBounds(312, 86, 114, 20);
 		panel.add(cbDestinoIda);
 		
 		dateChooserFechaIda = new JDateChooser();
+		dateChooserFechaIda.getCalendarButton().setBackground(Color.WHITE);
 		dateChooserFechaIda.setDate(new Date());
 		dateChooserFechaIda.setBounds(20, 134, 95, 20);
 		panel.add(dateChooserFechaIda);

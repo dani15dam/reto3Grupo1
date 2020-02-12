@@ -18,6 +18,8 @@ import java.util.Date;
 import java.awt.event.ActionEvent;
 import com.toedter.calendar.JDateChooser;
 import com.jgoodies.forms.factories.DefaultComponentFactory;
+import java.awt.Font;
+import java.awt.Color;
 
 public class IdaVuelta {
 
@@ -65,46 +67,56 @@ public class IdaVuelta {
 	 */
 	private void initialize() {
 		idaVuelta = new JFrame();
-		idaVuelta.setBounds(100, 100, 551, 384);
+		idaVuelta.getContentPane().setBackground(Color.WHITE);
+		idaVuelta.setBounds(100, 100, 531, 384);
 		idaVuelta.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		idaVuelta.getContentPane().setLayout(null);
 		
 		JPanel panel = new JPanel();
-		panel.setBounds(0, 0, 535, 334);
+		panel.setBackground(Color.WHITE);
+		panel.setBounds(0, 0, 515, 334);
 		idaVuelta.getContentPane().add(panel);
 		panel.setLayout(null);
 		
 		JLabel lblIdaYVuelta = new JLabel("Ida y Vuelta");
-		lblIdaYVuelta.setBounds(185, 11, 69, 14);
+		lblIdaYVuelta.setForeground(new Color(165, 42, 42));
+		lblIdaYVuelta.setFont(new Font("Tahoma", Font.ITALIC, 16));
+		lblIdaYVuelta.setBounds(217, 27, 89, 34);
 		panel.add(lblIdaYVuelta);
 		
 		trayectoIda2 = new JComboBox<>();
-		trayectoIda2.setBounds(49, 59, 134, 20);
+		trayectoIda2.setBackground(Color.WHITE);
+		trayectoIda2.setBounds(73, 86, 134, 20);
 		panel.add(trayectoIda2);
 		
 		 horaVuelta = new JComboBox();
-		horaVuelta.setBounds(291, 122, 68, 20);
+		 horaVuelta.setBackground(Color.WHITE);
+		horaVuelta.setBounds(397, 142, 68, 20);
 		panel.add(horaVuelta);
 		
 		cantidadIda2 = new JComboBox();
-		cantidadIda2.setBounds(271, 228, 38, 20);
+		cantidadIda2.setBackground(Color.WHITE);
+		cantidadIda2.setBounds(239, 197, 38, 20);
 		cantidadIda2.setModel(new DefaultComboBoxModel(new String[] { "1", "2","3","4","5","6","7","8","9" }));
 		panel.add(cantidadIda2);
 		
 		horaIda = new JComboBox();
-		horaIda.setBounds(83, 122, 69, 20);
+		horaIda.setBackground(Color.WHITE);
+		horaIda.setBounds(73, 142, 69, 20);
 		panel.add(horaIda);
 		
 		JLabel lblNewLabel = new JLabel("precio");
-		lblNewLabel.setBounds(408, 62, 46, 14);
+		lblNewLabel.setBounds(185, 231, 46, 14);
 		panel.add(lblNewLabel);
 		
 		precioIda2 = new JTextField();
-		precioIda2.setBounds(459, 59, 66, 20);
+		precioIda2.setBackground(Color.WHITE);
+		precioIda2.setBounds(217, 228, 86, 20);
 		panel.add(precioIda2);
 		precioIda2.setColumns(10);
 		
 		totalIdaVuelta = new JTextField();
+		totalIdaVuelta.setBackground(Color.WHITE);
 		totalIdaVuelta.setBounds(217, 259, 86, 20);
 		panel.add(totalIdaVuelta);
 		totalIdaVuelta.setColumns(10);
@@ -116,46 +128,53 @@ public class IdaVuelta {
 		panel.add(lblTotal);
 		
 		btnSiguienteIdaVuelta = new JButton("siguiente");
-		btnSiguienteIdaVuelta.setBounds(436, 300, 89, 23);
+		btnSiguienteIdaVuelta.setBackground(Color.WHITE);
+		btnSiguienteIdaVuelta.setBounds(397, 311, 89, 23);
 		panel.add(btnSiguienteIdaVuelta);
 		
 		btnCancelarIdaVuelta = new JButton("cancelar");
+		btnCancelarIdaVuelta.setBackground(Color.WHITE);
 		btnCancelarIdaVuelta.setBounds(14, 311, 89, 23);
 		panel.add(btnCancelarIdaVuelta);
 		
 		JLabel lblVuelta = new JLabel("Vuelta");
-		lblVuelta.setBounds(239, 97, 46, 14);
+		lblVuelta.setBounds(314, 117, 46, 14);
 		panel.add(lblVuelta);
 		
 		dateChooserIda = new JDateChooser();
 		dateChooserIda.setDate(new Date());
-		dateChooserIda.setBounds(73, 91, 95, 20);
+		dateChooserIda.setBounds(73, 111, 95, 20);
 		panel.add(dateChooserIda);
 		
 		dateChooserVuelta = new JDateChooser();
 		dateChooserVuelta.setDate(new Date());
-		dateChooserVuelta.setBounds(281, 91, 95, 20);
+		dateChooserVuelta.setBounds(370, 111, 95, 20);
 		panel.add(dateChooserVuelta);
 		
 		comboBoxIdaVueltaDestino = new JComboBox();
-		comboBoxIdaVueltaDestino.setBounds(271, 59, 128, 20);
+		comboBoxIdaVueltaDestino.setBackground(Color.WHITE);
+		comboBoxIdaVueltaDestino.setBounds(337, 86, 128, 20);
 		panel.add(comboBoxIdaVueltaDestino);
 		
 		JLabel lblNewLabel_1 = new JLabel("Destino");
-		lblNewLabel_1.setBounds(208, 62, 46, 14);
+		lblNewLabel_1.setBounds(288, 89, 46, 14);
 		panel.add(lblNewLabel_1);
 		
 		JLabel lblNewLabel_2 = new JLabel("Origen");
-		lblNewLabel_2.setBounds(14, 62, 46, 14);
+		lblNewLabel_2.setBounds(27, 89, 46, 14);
 		panel.add(lblNewLabel_2);
 		
 		JLabel lblNewLabel_3 = new JLabel("ida");
-		lblNewLabel_3.setBounds(45, 97, 46, 14);
+		lblNewLabel_3.setBounds(43, 117, 46, 14);
 		panel.add(lblNewLabel_3);
 		
 		JLabel lblNewLabel_4 = new JLabel("Cantidad");
-		lblNewLabel_4.setBounds(215, 231, 46, 14);
+		lblNewLabel_4.setBounds(185, 200, 46, 14);
 		panel.add(lblNewLabel_4);
+		
+		JLabel lblNewLabel_5 = new JLabel("Hora");
+		lblNewLabel_5.setBounds(368, 145, 29, 14);
+		panel.add(lblNewLabel_5);
 	}
 
 
@@ -231,5 +250,20 @@ public class IdaVuelta {
 	public void setDateChooserVuelta(JDateChooser dateChooserVuelta) {
 		this.dateChooserVuelta = dateChooserVuelta;
 	}
-	
+
+	public JTextField getPrecioIda2() {
+		return precioIda2;
+	}
+
+	public void setPrecioIda2(JTextField precioIda2) {
+		this.precioIda2 = precioIda2;
+	}
+
+	public JTextField getTotalIdaVuelta() {
+		return totalIdaVuelta;
+	}
+
+	public void setTotalIdaVuelta(JTextField totalIdaVuelta) {
+		this.totalIdaVuelta = totalIdaVuelta;
+	}
 }

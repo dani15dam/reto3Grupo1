@@ -15,9 +15,11 @@ import modelo.HoraBBDD;
 import modelo.LineasBus;
 import modelo.Paradas;
 import modelo.ParadasBBDD;
-import vista.Cuenta;
+import modelo.Precio;
+import modelo.PrecioBBDD;
 import vista.Ida;
 import vista.IdaVuelta;
+import vista.InicioSesion;
 import vista.Lineas;
 
 public class ControladorIdaVuelta implements ActionListener {
@@ -25,6 +27,7 @@ public class ControladorIdaVuelta implements ActionListener {
 	private IdaVuelta ventanaIdaVuelta;
 	private Lineas ventanaLinea;
 	private Hora ventanaHora;
+	private Precio modeloPrecio;
 
 	public ControladorIdaVuelta(IdaVuelta pTrayectoIda) {
 
@@ -43,7 +46,7 @@ public class ControladorIdaVuelta implements ActionListener {
 		inicializarControladorIdaVuelta();
 
 		rellenarListaParadas();
-		rellenarHoras();
+		rellenarHoras2();
 		deshabilitarFecha();
 
 	}
@@ -72,10 +75,10 @@ public class ControladorIdaVuelta implements ActionListener {
 		switch (botonPulsado) {
 		case "siguiente":
 
-			Cuenta cuenta = new Cuenta();
-			cuenta.getCuenta().setVisible(true);
+			InicioSesion inicioSesion = new InicioSesion();
+			inicioSesion.setVisible(true);
 
-			ControladorCuenta controladorCuenta = new ControladorCuenta(cuenta);
+			ControladorEntrar controladorEntrar = new ControladorEntrar(inicioSesion);
 			ventanaIdaVuelta.getIdaVuelta().dispose();
 
 			break;
@@ -142,8 +145,71 @@ public class ControladorIdaVuelta implements ActionListener {
 
 	}
 
-	public void deshabilitarFecha() {
+	private void deshabilitarFecha() {
 		this.ventanaIdaVuelta.getDateChooserIda().setMinSelectableDate(new Date());
 		this.ventanaIdaVuelta.getDateChooserVuelta().setMinSelectableDate(new Date());
+	}
+
+	private void rellenarHoras2() {
+
+		ArrayList<Hora> hora = new ArrayList<Hora>();
+
+		LineasBus linea = (LineasBus) this.ventanaLinea.getComboBoxLineas().getSelectedItem();
+
+		try {
+
+			hora = HoraBBDD.obtenerHoras(linea.getCod_lineas());
+
+			for (int i = 0; i < hora.size(); i++) {
+
+				this.ventanaIdaVuelta.getHoraIda().addItem(hora.get(i).getHora());
+				this.ventanaIdaVuelta.getHoraVuelta().addItem(hora.get(i).getHora());
+
+			}
+
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		}
+
+	}
+
+	public double distanciaCoord() throws NumberFormatException, SQLException {
+		ArrayList<Precio> preciodistancias = new ArrayList<Precio>();
+
+		Paradas origen = (Paradas) this.ventanaIdaVuelta.getTrayectoIda2().getSelectedItem();
+
+		double origenLongitud = Double.parseDouble(PrecioBBDD.obtenerLongOrigen(origen.getCod_parada()).toString());
+		double origenLatitud = Double.parseDouble(PrecioBBDD.obtenerLongOrigen(origen.getCod_parada()).toString());
+		double destinoLongitud = Double.parseDouble(PrecioBBDD.obtenerLongOrigen(origen.getCod_parada()).toString());
+		double DestinoLatitud = Double.parseDouble(PrecioBBDD.obtenerLongOrigen(origen.getCod_parada()).toString());
+
+		double radioTierra = 6371;
+		double dLat = Math.toRadians(DestinoLatitud - origenLatitud);
+		double dLng = Math.toRadians(destinoLongitud - origenLongitud);
+		double sindLat = Math.sin(dLat / 2);
+		double sindLng = Math.sin(dLng / 2);
+		double va1 = Math.pow(sindLat, 2) + Math.pow(sindLng, 2) * Math.cos(Math.toRadians(origenLatitud))
+				* Math.cos(Math.toRadians(DestinoLatitud));
+		double va2 = 2 * Math.atan2(Math.sqrt(va1), Math.sqrt(1 - va1));
+		double distancia = radioTierra * va2;
+
+		return distancia;
+	}
+
+	public void obtenerPrecio(double distancia) throws NumberFormatException, SQLException {
+
+		ArrayList<Paradas> paradas = new ArrayList<Paradas>();
+		int origen1 = (int) this.ventanaIdaVuelta.getTrayectoIda2().getSelectedItem();
+		int destino = (int) this.ventanaIdaVuelta.getComboBoxIdaVueltaDestino().getSelectedItem();
+
+		for (int i = origen1; i < destino; i++) {
+
+			distanciaCoord();
+
+			int precio = (int) distancia * 8 * 30 / 12;
+
+		}
+
 	}
 }
