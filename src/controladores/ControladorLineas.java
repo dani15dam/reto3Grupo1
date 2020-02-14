@@ -14,9 +14,9 @@ import modelo.LineasBus;
 import modelo.Paradas;
 import modelo.ParadasBBDD;
 import modelo.Precio;
+
 import vista.Ida;
 import vista.IdaVuelta;
-import vista.Inicio;
 import vista.Lineas;
 
 public class ControladorLineas implements ActionListener {
@@ -37,10 +37,10 @@ public class ControladorLineas implements ActionListener {
 
 		this.ventanaLinea.getBtnSiguienteLineas().addActionListener(this);
 		this.ventanaLinea.getBtnSiguienteLineas().setActionCommand("btnSiguiente");
-		
-		this.ventanaLinea.getBtnCancelarLineas().addActionListener(this);
-		this.ventanaLinea.getBtnCancelarLineas().setActionCommand("btnCancelarLineas");
-
+//		
+//		this.ventanaTrayecto.getBtnSalir().addActionListener(this);
+//		this.ventanaTrayecto.getBtnSalir().setActionCommand("btnSalir");
+//
 
 	}
 
@@ -62,46 +62,26 @@ public class ControladorLineas implements ActionListener {
 				IdaVuelta idaVuelta = new IdaVuelta();
 				idaVuelta.getIdaVuelta().setVisible(true);
 
-				ControladorIdaVuelta controladorida = new ControladorIdaVuelta(idaVuelta, this.ventanaLinea, ventanaHoras);
-				ventanaLinea.getLineas().dispose();
+				ControladorIdaVuelta controladorida = new ControladorIdaVuelta(idaVuelta, this.ventanaLinea,
+						ventanaHoras);
 			}
 
 			break;
-			
-		case"btnCancelarLineas":
-			
-			Inicio inicio = new Inicio();
-			inicio.setVisible(true);
-
-	
-			ventanaLinea.getLineas().dispose();
-
-		
-		
-		break;
 
 		}
 	}
 
 	private void rellenarComboParadas() {
-
 		ArrayList<LineasBus> linea = new ArrayList<LineasBus>();
-
 		try {
-
 			linea = LineasBBDD.obtenerLineas();
-
 			for (int i = 0; i < linea.size(); i++) {
-
 				this.ventanaLinea.getComboBoxLineas().addItem(linea.get(i));
-
 			}
 
 		} catch (SQLException e) {
 
 			e.printStackTrace();
 		}
-
 	}
-
 }

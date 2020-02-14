@@ -25,17 +25,14 @@ import java.awt.BorderLayout;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
-import com.jgoodies.forms.layout.FormLayout;
-import com.jgoodies.forms.layout.ColumnSpec;
-import com.jgoodies.forms.layout.FormSpecs;
-import com.jgoodies.forms.layout.RowSpec;
+
 
 import java.awt.Font;
 
 public class Pago extends JFrame{
 
 	public static enum enumAcciones{
-		BtnPagar, BtnDevolver, BtnSiguiente,BtnCancelar
+		BtnPagar, BtnDevolver, BtnSiguiente
 		
 		
 	}
@@ -47,7 +44,6 @@ public class Pago extends JFrame{
 	private JButton btnDevolver;
 	private JButton btnPunto;
 	private JButton btnSiguiente;
-	private JButton btnCancelar;
 	
 	
 	
@@ -106,15 +102,10 @@ public class Pago extends JFrame{
 	public void setBtnPagar(JButton btnPagar) {
 		this.btnPagar = btnPagar;
 	}
-	
 
-	public JButton getBtnCancelar() {
-		return btnCancelar;
-	}
-
-	public void setBtnCancelar(JButton btnCancelar) {
-		this.btnCancelar = btnCancelar;
-	}
+	/**
+	 * Launch the application.
+	 */
 
 	/**
 	 * Create the application.
@@ -299,7 +290,7 @@ public class Pago extends JFrame{
 		btnSiguiente.setBounds(307, 333, 104, 38);
 		getContentPane().add(btnSiguiente);
 		
-		btnCancelar = new JButton("Cancelar");
+		JButton btnCancelar = new JButton("Cancelar");
 		btnCancelar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
@@ -307,8 +298,8 @@ public class Pago extends JFrame{
 		btnCancelar.setBounds(20, 333, 112, 38);
 		getContentPane().add(btnCancelar);
 		
+		//este jtext contiene el precio a pagar
 		txtTotal = new JTextField();
-		txtTotal.setText("80");
 		txtTotal.setColumns(10);
 		txtTotal.setBounds(315, 23, 96, 20);
 		getContentPane().add(txtTotal);
@@ -326,7 +317,7 @@ public class Pago extends JFrame{
 		txtRestante.setBounds(196, 23, 96, 20);
 		getContentPane().add(txtRestante);
 		
-		JLabel lblTotalAPagar = new JLabel("total a pagar:");
+		JLabel lblTotalAPagar = new JLabel("falta:");
 		lblTotalAPagar.setBounds(196, 11, 79, 14);
 		getContentPane().add(lblTotalAPagar);
 		

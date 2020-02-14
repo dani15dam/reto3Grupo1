@@ -2,6 +2,8 @@ package controladores;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -9,7 +11,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
 
+import javax.swing.JTextField;
+
 import conexion.Conexion;
+import controladores.ControladorIda;
 import modelo.Hora;
 import modelo.HoraBBDD;
 import modelo.LineasBus;
@@ -48,6 +53,12 @@ public class ControladorIdaVuelta implements ActionListener {
 		rellenarListaParadas();
 		rellenarHoras2();
 		deshabilitarFecha();
+		
+		Calculadora calculadora = new Calculadora(this);
+		calculadora.compute();
+		ventanaIdaVuelta.getTrayectoIda2().addItemListener(calculadora);
+		ventanaIdaVuelta.getComboBoxIdaVueltaDestino().addItemListener(calculadora);	
+
 
 	}
 
@@ -78,7 +89,7 @@ public class ControladorIdaVuelta implements ActionListener {
 			InicioSesion inicioSesion = new InicioSesion();
 			inicioSesion.setVisible(true);
 
-			ControladorEntrar controladorEntrar = new ControladorEntrar(inicioSesion);
+			ControladorEntrar controladorEntrar = new ControladorEntrar(inicioSesion,null, ventanaIdaVuelta);
 			ventanaIdaVuelta.getIdaVuelta().dispose();
 
 			break;
@@ -175,14 +186,15 @@ public class ControladorIdaVuelta implements ActionListener {
 	}
 
 	public double distanciaCoord() throws NumberFormatException, SQLException {
-		ArrayList<Precio> preciodistancias = new ArrayList<Precio>();
+	
 
 		Paradas origen = (Paradas) this.ventanaIdaVuelta.getTrayectoIda2().getSelectedItem();
+		Paradas destino = (Paradas) this.ventanaIdaVuelta.getComboBoxIdaVueltaDestino().getSelectedItem();
 
 		double origenLongitud = Double.parseDouble(PrecioBBDD.obtenerLongOrigen(origen.getCod_parada()).toString());
-		double origenLatitud = Double.parseDouble(PrecioBBDD.obtenerLongOrigen(origen.getCod_parada()).toString());
-		double destinoLongitud = Double.parseDouble(PrecioBBDD.obtenerLongOrigen(origen.getCod_parada()).toString());
-		double DestinoLatitud = Double.parseDouble(PrecioBBDD.obtenerLongOrigen(origen.getCod_parada()).toString());
+		double origenLatitud = Double.parseDouble(PrecioBBDD.obtenerLatOrigen(origen.getCod_parada()).toString());
+		double destinoLongitud = Double.parseDouble(PrecioBBDD.obtenerLongDestino(destino.getCod_parada()).toString());
+		double DestinoLatitud = Double.parseDouble(PrecioBBDD.obtenerLatDestino(destino.getCod_parada()).toString());
 
 		double radioTierra = 6371;
 		double dLat = Math.toRadians(DestinoLatitud - origenLatitud);
@@ -197,19 +209,40 @@ public class ControladorIdaVuelta implements ActionListener {
 		return distancia;
 	}
 
-	public void obtenerPrecio(double distancia) throws NumberFormatException, SQLException {
-
-		ArrayList<Paradas> paradas = new ArrayList<Paradas>();
-		int origen1 = (int) this.ventanaIdaVuelta.getTrayectoIda2().getSelectedItem();
-		int destino = (int) this.ventanaIdaVuelta.getComboBoxIdaVueltaDestino().getSelectedItem();
-
-		for (int i = origen1; i < destino; i++) {
-
-			distanciaCoord();
-
-			int precio = (int) distancia * 8 * 30 / 12;
-
+	public double obtenerPrecio(double distancia) throws NumberFormatException, SQLException {
+		return distanciaCoord() * 8 * 30 / 12;
+	}
+	
+	public JTextField getPrecio() {
+		return ventanaIdaVuelta.getPrecioIda2();
+	}
+	
+	class Calculadora implements ItemListener {
+		
+		private ControladorIdaVuelta controladorVuelta;
+		
+		public Calculadora(ControladorIdaVuelta controladorVuelta) {
+			System.out.println("handler");
+			this.controladorVuelta = controladorVuelta;
 		}
 
+		@Override
+		public void itemStateChanged(ItemEvent e) {
+			compute();
+		}
+		
+		public void compute() {
+			try {
+				double distancia = controladorVuelta.distanciaCoord();
+				double precio = controladorVuelta.obtenerPrecio(distancia);
+				double precioRedondeado=Math.floor(precio*100)/100;
+				controladorVuelta.getPrecio().setText(Double.toString(precioRedondeado));
+			
+			} catch (Exception ignore) {
+				ignore.printStackTrace();
+			}
+			
+		}
+		
 	}
 }

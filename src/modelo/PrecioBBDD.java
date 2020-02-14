@@ -7,62 +7,46 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import conexion.Conexion;
-import controladores.ControladorIdaVuelta;
-import vista.IdaVuelta;
 
 public class PrecioBBDD {
 
-	private ArrayList<Precio> distancia;
-
-	public static ArrayList<Precio> obtenerLongOrigen(String cod_parada) throws SQLException {
-
-		IdaVuelta posicion = new IdaVuelta();
-
-		String origen = posicion.getTrayectoIda2().getSelectedItem().toString();
+	public static Double obtenerLongOrigen(String cod_parada) throws SQLException {
+		Double result = null;
 
 		Connection con = Conexion.conectar();
 
-		String sql = "select longitud from Parada where cod_parada='" + cod_parada + "';";
-
+		String sql = "select longitud from parada where cod_parada='" + cod_parada + "';";
+		
 		PreparedStatement ps = con.prepareStatement(sql);
 
 		ResultSet rs = ps.executeQuery();
 
-		ArrayList<Precio> preciodistancias = new ArrayList<Precio>();
 
 		try {
 
 			ps = con.prepareStatement(sql);
 
-			while (rs.next()) {
-
-				Precio precios = new Precio();
-
-				precios.setLongitud(rs.getString("Longitud"));
-
-				preciodistancias.add(precios);
+			if (rs.next()) {
+				result =  rs.getDouble("Longitud");
 
 			}
 
+		} catch (Exception e) {
+
+			System.out.println("Error: Clase Contacto, mï¿½todo obtener paradas");
+
+		} finally {
 			ps.close();
 			rs.close();
 			con.close();
-
-		} catch (Exception e) {
-
-			System.out.println("Error: Clase Contacto, método obtener paradas");
-
+			
 		}
-
-		return preciodistancias;
+		return result;
 
 	}
 
-	public static ArrayList<Precio> obtenerLatOrigen(String cod_parada) throws SQLException {
-
-		IdaVuelta posicion = new IdaVuelta();
-
-		String origen = posicion.getTrayectoIda2().getSelectedItem().toString();
+	public static Double obtenerLatOrigen(String cod_parada) throws SQLException {
+		Double result = null;
 
 		Connection con = Conexion.conectar();
 
@@ -72,63 +56,48 @@ public class PrecioBBDD {
 
 		ResultSet rs = ps.executeQuery();
 
-		ArrayList<Precio> origenLat = new ArrayList<Precio>();
 
 		try {
 
 			ps = con.prepareStatement(sql);
 
-			while (rs.next()) {
-
-				Precio precios = new Precio();
-
-				precios.setLatitud(rs.getString("Latitud"));
-
-				origenLat.add(precios);
-
+			if (rs.next()) {
+				result = rs.getDouble("Latitud");
 			}
 
-			ps.close();
-			rs.close();
-			con.close();
 
 		} catch (Exception e) {
 
-			System.out.println("Error: Clase Contacto, método obtener paradas");
+			System.out.println("Error: Clase Contacto, mï¿½todo obtener paradas");
 
+		} finally {
+			ps.close();
+			rs.close();
+			con.close();
+			
 		}
 
-		return origenLat;
+		return result;
 
 	}
 
-	public static ArrayList<Precio> obtenerLongDestino(String cod_parada) throws SQLException {
-
-		IdaVuelta posicion = new IdaVuelta();
-
-		String origen = posicion.getTrayectoIda2().getSelectedItem().toString();
+	public static Double obtenerLongDestino(String cod_parada) throws SQLException {
+		Double result = null;
 
 		Connection con = Conexion.conectar();
 
-		String sql = "select longitud from Parada where cod_parada='" + cod_parada + "';";
+		String sql = "select longitud from parada where cod_parada='" + cod_parada + "';";
 
 		PreparedStatement ps = con.prepareStatement(sql);
 
 		ResultSet rs = ps.executeQuery();
 
-		ArrayList<Precio> preciodistancias = new ArrayList<Precio>();
-
 		try {
 
 			ps = con.prepareStatement(sql);
 
-			while (rs.next()) {
-
-				Precio precios = new Precio();
-
-				precios.setLongitud(rs.getString("Longitud"));
-
-				preciodistancias.add(precios);
+			if(rs.next()) {
+				result = rs.getDouble("Longitud");
 
 			}
 
@@ -138,55 +107,53 @@ public class PrecioBBDD {
 
 		} catch (Exception e) {
 
-			System.out.println("Error: Clase Contacto, método obtener paradas");
+			System.out.println("Error: Clase Contacto, mï¿½todo obtener paradas");
 
+		} finally {
+			ps.close();
+			rs.close();
+			con.close();
+			
 		}
 
-		return preciodistancias;
+		return result;
 
 	}
 
-	public static ArrayList<Precio> obtenerLatDestino(String cod_parada) throws SQLException {
+	public static Double obtenerLatDestino(String cod_parada) throws SQLException {
 
-		IdaVuelta posicion = new IdaVuelta();
-
-		String origen = posicion.getTrayectoIda2().getSelectedItem().toString();
-
+		Double result = null;
+		
 		Connection con = Conexion.conectar();
 
-		String sql = "select latitud from Parada where cod_parada='" + cod_parada + "';";
+		String sql = "select latitud from parada where cod_parada='" + cod_parada + "';";
 
 		PreparedStatement ps = con.prepareStatement(sql);
 
 		ResultSet rs = ps.executeQuery();
 
-		ArrayList<Precio> preciodistancias = new ArrayList<Precio>();
 
 		try {
 
 			ps = con.prepareStatement(sql);
 
-			while (rs.next()) {
-
-				Precio precios = new Precio();
-
-				precios.setLatitud(rs.getString("Latitud"));
-
-				preciodistancias.add(precios);
+			if (rs.next()) {
+				result = rs.getDouble("Latitud");
 
 			}
 
+		} catch (Exception e) {
+
+			System.out.println("Error: Clase Contacto, metodo obtener paradas");
+
+		} finally {
 			ps.close();
 			rs.close();
 			con.close();
 
-		} catch (Exception e) {
-
-			System.out.println("Error: Clase Contacto, método obtener paradas");
-
 		}
 
-		return preciodistancias;
+		return result;
 
 	}
 

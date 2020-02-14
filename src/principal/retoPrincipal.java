@@ -1,9 +1,7 @@
 package principal;
 
-import controladores.ControladorLineas;
-
-import vista.Lineas;
 import vista.Inicio;
+import vista.Lineas;
 
 public class retoPrincipal {
 

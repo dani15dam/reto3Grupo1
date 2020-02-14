@@ -92,10 +92,10 @@ public class InicioSesion extends JFrame {
 	public InicioSesion() {
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 524, 366);
+		setBounds(100, 100, 516, 366);
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.WHITE);
-		contentPane.setBorder(new LineBorder(new Color(0, 0, 0), 0, true));
+		contentPane.setBorder(new LineBorder(new Color(0, 0, 0), 2, true));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
@@ -103,51 +103,49 @@ public class InicioSesion extends JFrame {
 		panel.setBorder(new LineBorder(new Color(0, 0, 0), 0));
 		panel.setBackground(Color.WHITE);
 		panel.setBackground(UIManager.getColor("ToggleButton.background"));
-		panel.setBounds(0, 0, 508, 327);
+		panel.setBounds(0, 0, 500, 327);
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
-		JLabel lblTitulo = new JLabel("Inicio Sesion");
+		JLabel lblTitulo = new JLabel("Iniciar Sesion");
 		lblTitulo.setForeground(new Color(165, 42, 42));
-		lblTitulo.setFont(new Font("Microsoft JhengHei Light", Font.BOLD, 19));
-		lblTitulo.setBounds(171, 11, 162, 36);
+		lblTitulo.setFont(new Font("Tahoma", Font.PLAIN, 22));
+		lblTitulo.setBounds(175, 11, 182, 36);
 		panel.add(lblTitulo);
 		
 		JLabel lblDni = new JLabel("DNI:");
-		lblDni.setForeground(Color.BLACK);
-		lblDni.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblDni.setBounds(80, 70, 91, 27);
+		lblDni.setFont(new Font("Tahoma", Font.PLAIN, 23));
+		lblDni.setBounds(119, 68, 91, 27);
 		panel.add(lblDni);
 		
-		JLabel lblContrasea = new JLabel("Contrase\u00F1a:");
-		lblContrasea.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblContrasea.setBounds(80, 134, 141, 36);
+		JLabel lblContrasea = new JLabel("CONTRASE\u00D1A:");
+		lblContrasea.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lblContrasea.setBounds(109, 132, 213, 36);
 		panel.add(lblContrasea);
 		
 		textFieldDni = new JTextField();
-		textFieldDni.setBounds(80, 96, 253, 27);
+		textFieldDni.setBounds(114, 94, 188, 27);
 		panel.add(textFieldDni);
 		textFieldDni.setColumns(10);
 		
-		btnContinuar = new JButton("Siguiente");
-		btnContinuar.setBackground(Color.WHITE);
-		btnContinuar.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		btnContinuar.setBounds(322, 257, 99, 27);
+		btnContinuar = new JButton("CONTINUAR");
+		btnContinuar.setBackground(UIManager.getColor("ToggleButton.light"));
+		btnContinuar.setFont(new Font("Arial", Font.BOLD, 12));
+		btnContinuar.setBounds(369, 257, 99, 27);
 		panel.add(btnContinuar);
 		
-		btnSalir = new JButton("Salir");
-		btnSalir.setBackground(Color.WHITE);
-		btnSalir.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		btnSalir.setBounds(65, 257, 91, 27);
+		btnSalir = new JButton("SALIR");
+		btnSalir.setBackground(UIManager.getColor("ToggleButton.light"));
+		btnSalir.setFont(new Font("Arial", Font.BOLD, 12));
+		btnSalir.setBounds(30, 257, 83, 27);
 		panel.add(btnSalir);
 		
 		passwordField= new JPasswordField();
-		passwordField.setBounds(80, 179, 253, 27);
+		passwordField.setBounds(119, 168, 188, 27);
 		panel.add(passwordField);
 		
-		btnCrearCuenta = new JButton("Crear Cuenta");
-		btnCrearCuenta.setFont(new Font("Tahoma", Font.PLAIN, 11));
-		btnCrearCuenta.setBounds(357, 91, 99, 32);
+		btnCrearCuenta = new JButton("CREAR CUENTA");
+		btnCrearCuenta.setBounds(328, 94, 109, 27);
 		panel.add(btnCrearCuenta);
 	}
 }

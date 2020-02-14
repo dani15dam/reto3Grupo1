@@ -1,28 +1,28 @@
 package vista;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.JComboBox;
+import java.awt.Font;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
+import java.util.Date;
+
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.JTextField;
+
+import com.toedter.calendar.JDateChooser;
+
 import controladores.ControladorIda;
 import modelo.Fecha;
-
-import javax.swing.JButton;
-import java.awt.Font;
-import java.awt.event.ActionListener;
-import java.util.Date;
-import java.awt.event.ActionEvent;
-import com.toedter.calendar.JCalendar;
-import com.toedter.calendar.JDateChooser;
 import java.awt.Color;
 
 public class Ida {
 
 	private JFrame Ida;
 	private JTextField precioIda;
-	private JTextField totalIda;
 	private JComboBox<String> trayectoIda;
 	private JComboBox<String> horaIda;
 	private JComboBox<String> cantidadIda;
@@ -80,12 +80,10 @@ public class Ida {
 		panel.setLayout(null);
 
 		trayectoIda = new JComboBox<>();
-		trayectoIda.setBackground(Color.WHITE);
 		trayectoIda.setBounds(20, 86, 133, 20);
 		panel.add(trayectoIda);
 
 		horaIda = new JComboBox<String>();
-		horaIda.setBackground(Color.WHITE);
 		horaIda.setBounds(175, 137, 90, 20);
 		panel.add(horaIda);
 
@@ -97,8 +95,7 @@ public class Ida {
 
 
 		JLabel lblPrecio = new JLabel("precio");
-		lblPrecio.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblPrecio.setBounds(294, 141, 46, 14);
+		lblPrecio.setBounds(284, 140, 46, 14);
 		panel.add(lblPrecio);
 
 		precioIda = new JTextField();
@@ -108,18 +105,6 @@ public class Ida {
 		precioIda.setColumns(10);
 		precioIda.setEditable(false);
 
-		totalIda = new JTextField();
-		totalIda.setBackground(Color.WHITE);
-		totalIda.setBounds(340, 178, 86, 20);
-		panel.add(totalIda);
-		totalIda.setColumns(10);
-		totalIda.setEditable(false);
-
-		JLabel lblTotal = new JLabel("total");
-		lblTotal.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblTotal.setBounds(294, 182, 46, 14);
-		panel.add(lblTotal);
-
 		btnSiguienteIda = new JButton("siguiente");
 		btnSiguienteIda.setBackground(Color.WHITE);
 		btnSiguienteIda.setBounds(350, 291, 89, 23);
@@ -128,22 +113,22 @@ public class Ida {
 
 		btnCancelarIda = new JButton("Cancelar");
 		btnCancelarIda.setBackground(Color.WHITE);
+		btnCancelarIda.setForeground(new Color(0, 0, 0));
 		btnCancelarIda.setBounds(10, 291, 89, 23);
 		panel.add(btnCancelarIda);
 
 		JLabel lblIda = new JLabel("Ida");
 		lblIda.setForeground(new Color(165, 42, 42));
+		lblIda.setBackground(Color.WHITE);
 		lblIda.setFont(new Font("Tahoma", Font.ITALIC, 23));
-		lblIda.setBounds(205, 11, 60, 28);
+		lblIda.setBounds(200, 11, 60, 28);
 		panel.add(lblIda);
 		
 		cbDestinoIda = new JComboBox();
-		cbDestinoIda.setBackground(Color.WHITE);
 		cbDestinoIda.setBounds(312, 86, 114, 20);
 		panel.add(cbDestinoIda);
 		
 		dateChooserFechaIda = new JDateChooser();
-		dateChooserFechaIda.getCalendarButton().setBackground(Color.WHITE);
 		dateChooserFechaIda.setDate(new Date());
 		dateChooserFechaIda.setBounds(20, 134, 95, 20);
 		panel.add(dateChooserFechaIda);
@@ -193,6 +178,10 @@ public class Ida {
 	public JButton getBtnCancelarIda() {
 		return btnCancelarIda;
 	}
+	
+	public JTextField getPrecioIda () {
+		return precioIda;
+	}
 
 	public void setBtnCancelarIda(JButton btnCancelarIda) {
 		this.btnCancelarIda = btnCancelarIda;
@@ -212,6 +201,7 @@ public class Ida {
 		return "Ida [dateChooserFechaIda=" + dateChooserFechaIda + "]";
 	}
 
+	
 	
 
 

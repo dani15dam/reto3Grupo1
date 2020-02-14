@@ -107,43 +107,40 @@ public class Lineas {
 	 */
 	private void initialize() {
 		lineas = new JFrame();
-		lineas.setBounds(100, 100, 450, 308);
+		lineas.getContentPane().setBackground(Color.WHITE);
+		lineas.setBounds(100, 100, 450, 352);
 		lineas.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		lineas.getContentPane().setLayout(null);
 
 		JPanel panel = new JPanel();
 		panel.setBackground(Color.WHITE);
-		panel.setBounds(0, 0, 434, 263);
+		panel.setForeground(Color.WHITE);
+		panel.setBounds(0, 0, 434, 302);
 		lineas.getContentPane().add(panel);
 		panel.setLayout(null);
 
-		JLabel lblLineas = new JLabel("Seleccione Linea");
+		JLabel lblLineas = new JLabel("Lineas");
 		lblLineas.setForeground(new Color(165, 42, 42));
-		lblLineas.setBackground(Color.WHITE);
-		lblLineas.setFont(new Font("Tahoma", Font.ITALIC, 16));
-		lblLineas.setBounds(157, 29, 125, 23);
+		lblLineas.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblLineas.setBounds(191, 11, 71, 23);
 		panel.add(lblLineas);
 
 		tipoLinea = new JComboBox();
-		tipoLinea.setBackground(Color.WHITE);
 		tipoLinea.setModel(new DefaultComboBoxModel(new String[] { "ida", "ida-vuelta" }));
 		tipoLinea.setBounds(349, 96, 62, 20);
 		panel.add(tipoLinea);
 
 		btnCancelarLineas = new JButton("cancelar");
-		btnCancelarLineas.setBackground(Color.WHITE);
-		btnCancelarLineas.setBounds(10, 201, 89, 23);
+		btnCancelarLineas.setBounds(10, 253, 89, 23);
 		panel.add(btnCancelarLineas);
 		
 		
 		btnSiguienteLineas = new JButton("siguiente");
-		btnSiguienteLineas.setBackground(Color.WHITE);
-		btnSiguienteLineas.setBounds(322, 201, 89, 23);
+		btnSiguienteLineas.setBounds(335, 253, 89, 23);
 		panel.add(btnSiguienteLineas);
 		
 		comboBoxLineas = new JComboBox();
-		comboBoxLineas.setBackground(Color.WHITE);
-		comboBoxLineas.setBounds(138, 87, 156, 38);
+		comboBoxLineas.setBounds(137, 87, 156, 38);
 		
 		panel.add(comboBoxLineas);
 		

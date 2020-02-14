@@ -2,11 +2,14 @@ package controladores;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
 
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 import modelo.Fecha;
 import modelo.Hora;
@@ -52,6 +55,11 @@ public class ControladorIda implements ActionListener {
 
 		deshabilitarFecha();
 
+		Calculadora calculadora = new Calculadora(this);
+		calculadora.compute();
+		ventanaIda.getTrayectoIda().addItemListener(calculadora);
+		ventanaIda.getCbDestinoIda().addItemListener(calculadora);
+
 	}
 
 	public ControladorIda() {
@@ -65,8 +73,11 @@ public class ControladorIda implements ActionListener {
 
 		this.ventanaIda.getTrayectoIda().addActionListener(this);
 		this.ventanaIda.getTrayectoIda().setActionCommand("trayecto");
+		
 
+		
 		this.ventanaIda.getBtnCancelarIda().addActionListener(this);
+		
 		this.ventanaIda.getBtnCancelarIda().setActionCommand("cancelar");
 
 	}
@@ -78,17 +89,24 @@ public class ControladorIda implements ActionListener {
 		switch (botonPulsado) {
 		case "siguiente":
 
-			JOptionPane.showMessageDialog(null, "la fecha: " + fechas.getFecha(ventanaIda.getDateChooserFechaIda()));
 
 			InicioSesion sesion = new InicioSesion();
 			sesion.setVisible(true);
 
-			ControladorEntrar controladorCuenta = new ControladorEntrar(sesion);
+			ControladorEntrar controladorCuenta = new ControladorEntrar(sesion, ventanaIda, null);
 			ventanaIda.getIda().dispose();
 
 			break;
 
-		case "trayecto":
+		case "newbtn":
+			try {
+				distanciaCoord();
+				obtenerPrecio(distanciaCoord());
+			} catch (NumberFormatException | SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			} 
+			
 
 			break;
 
@@ -163,19 +181,21 @@ public class ControladorIda implements ActionListener {
 		ArrayList<Precio> preciodistancias = new ArrayList<Precio>();
 
 		Paradas origen = (Paradas) this.ventanaIda.getTrayectoIda().getSelectedItem();
+		
+		Paradas destino = (Paradas) this.ventanaIda.getCbDestinoIda().getSelectedItem();
 
 		double origenLongitud = Double.parseDouble(PrecioBBDD.obtenerLongOrigen(origen.getCod_parada()).toString());
-		double origenLatitud = Double.parseDouble(PrecioBBDD.obtenerLongOrigen(origen.getCod_parada()).toString());
-		double destinoLongitud = Double.parseDouble(PrecioBBDD.obtenerLongOrigen(origen.getCod_parada()).toString());
-		double DestinoLatitud = Double.parseDouble(PrecioBBDD.obtenerLongOrigen(origen.getCod_parada()).toString());
+		double origenLatitud = Double.parseDouble(PrecioBBDD.obtenerLatOrigen(origen.getCod_parada()).toString());
+		double destinoLongitud = Double.parseDouble(PrecioBBDD.obtenerLongDestino(destino.getCod_parada()).toString());
+		double destinoLatitud = Double.parseDouble(PrecioBBDD.obtenerLatDestino(destino.getCod_parada()).toString());
 
 		double radioTierra = 6371;
-		double dLat = Math.toRadians(DestinoLatitud - origenLatitud);
+		double dLat = Math.toRadians(destinoLatitud - origenLatitud);
 		double dLng = Math.toRadians(destinoLongitud - origenLongitud);
 		double sindLat = Math.sin(dLat / 2);
 		double sindLng = Math.sin(dLng / 2);
 		double va1 = Math.pow(sindLat, 2) + Math.pow(sindLng, 2) * Math.cos(Math.toRadians(origenLatitud))
-				* Math.cos(Math.toRadians(DestinoLatitud));
+				* Math.cos(Math.toRadians(destinoLatitud));
 		double va2 = 2 * Math.atan2(Math.sqrt(va1), Math.sqrt(1 - va1));
 		double distancia = radioTierra * va2;
 
@@ -183,21 +203,39 @@ public class ControladorIda implements ActionListener {
 	}
 
 	public double obtenerPrecio(double distancia) throws NumberFormatException, SQLException {
-
-		ArrayList<Paradas> paradas = new ArrayList<Paradas>();
-		double precio = 0;
-		double origen1 = (double) this.ventanaIda.getCbDestinoIda().getSelectedItem();
-		double destino = (double) this.ventanaIda.getTrayectoIda().getSelectedItem();
-
-		for (double i = origen1; i < destino; i++) {
-
-			distanciaCoord();
-
-			precio = (double) distancia * 8 * 30 / 12;
-
+		return  distanciaCoord() * 0.80 * 30 / 30;
+	}
+	
+	public JTextField getPrecio() {
+		return ventanaIda.getPrecioIda();
+	}
+	
+	class Calculadora implements ItemListener {
+		
+		private ControladorIda controlador;
+		
+		public Calculadora(ControladorIda controlador) {
+			System.out.println("handler");
+			this.controlador = controlador;
 		}
-		return precio;
 
+		@Override
+		public void itemStateChanged(ItemEvent e) {
+			compute();
+		}
+		
+		public void compute() {
+			try {
+				double distancia = controlador.distanciaCoord();
+				double precio = controlador.obtenerPrecio(distancia);
+				double precioRedondeado=Math.floor(precio*100)/100;
+				controlador.getPrecio().setText(Double.toString(precioRedondeado));
+			} catch (Exception ignore) {
+				ignore.printStackTrace();
+			}
+			
+		}
+		
 	}
 }
 	

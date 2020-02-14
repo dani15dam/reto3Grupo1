@@ -14,7 +14,8 @@ import javax.swing.JTextField;
 import modelo.Cliente;
 import modelo.ClienteBD;
 import vista.InicioSesion;
-import vista.Devolucion;
+import vista.Ida;
+import vista.IdaVuelta;
 import vista.Inicio;
 import vista.Pago;
 import vista.Registro;
@@ -22,11 +23,13 @@ import vista.Registro;
 public class ControladorEntrar implements ActionListener {
 
 	private InicioSesion vistaEntrar;
-
-	public ControladorEntrar(InicioSesion pEntrar) {
+	private Ida ventanaIda;
+	private IdaVuelta ventanaIdaVuelta;
+	public ControladorEntrar(InicioSesion pEntrar,Ida ventanaIda, IdaVuelta ventanaIdaVuelta) {
 
 		this.vistaEntrar = pEntrar;
-
+		this.ventanaIda = ventanaIda;
+		this.ventanaIdaVuelta = ventanaIdaVuelta;
 		inicializarControlador();
 	}
 
@@ -78,7 +81,7 @@ public class ControladorEntrar implements ActionListener {
 
 			vistaRegistro.setVisible(true);
 
-			ControladorRegistro controladorRegistro = new ControladorRegistro(vistaRegistro);
+			ControladorRegistro controladorRegistro = new ControladorRegistro(vistaRegistro, ventanaIda, ventanaIdaVuelta);
 
 			break;
 
@@ -98,7 +101,7 @@ public class ControladorEntrar implements ActionListener {
 			Pago ventanaPago = new Pago();
 			ventanaPago.setVisible(true);
 
-			ControladorPago controladorPago = new ControladorPago(ventanaPago);
+			ControladorPago controladorPago = new ControladorPago(ventanaPago, ventanaIda, ventanaIdaVuelta);
 
 			vistaEntrar.dispose();
 

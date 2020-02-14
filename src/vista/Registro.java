@@ -91,12 +91,12 @@ public class Registro extends JFrame {
 		this.textFieDni = textFieDni;
 	}
 
-	public JTextField getTextFieContraseña() {
+	public JTextField getTextFieCont() {
 		return passwordField;
 	}
 
-	public void setTextFieContraseña(JPasswordField textFieContraseña) {
-		this.passwordField = textFieContraseña;
+	public void setTextFieCont(JPasswordField textFieCont) {
+		this.passwordField = textFieCont;
 	}
 
 	public JLabel getLblNombre() {
@@ -177,37 +177,38 @@ public class Registro extends JFrame {
 		panel.setLayout(null);
 		
 		JLabel lblRegistro = new JLabel("REGISTRAR");
+		lblRegistro.setForeground(new Color(165, 42, 42));
 		lblRegistro.setBounds(121, 11, 183, 36);
 		lblRegistro.setFont(new Font("Arial", Font.BOLD, 30));
 		panel.add(lblRegistro);
 		
 		lblNombre = new JLabel("Nombre");
-		lblNombre.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblNombre.setBounds(29, 61, 68, 18);
+		lblNombre.setFont(new Font("Arial", Font.BOLD, 15));
+		lblNombre.setBounds(29, 57, 68, 18);
 		panel.add(lblNombre);
 		
 		lblApellido = new JLabel("Apellido");
-		lblApellido.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblApellido.setBounds(29, 124, 85, 18);
+		lblApellido.setFont(new Font("Arial", Font.BOLD, 15));
+		lblApellido.setBounds(29, 111, 85, 18);
 		panel.add(lblApellido);
 		
 		lblDni = new JLabel("DNI");
-		lblDni.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblDni.setFont(new Font("Arial", Font.BOLD, 15));
 		lblDni.setBounds(223, 171, 68, 18);
 		panel.add(lblDni);
 		
 		lblSexo = new JLabel("Sexo");
-		lblSexo.setFont(new Font("Calibri", Font.PLAIN, 15));
-		lblSexo.setBounds(238, 81, 48, 18);
+		lblSexo.setFont(new Font("Arial", Font.BOLD, 15));
+		lblSexo.setBounds(223, 80, 68, 18);
 		panel.add(lblSexo);
 		
 		lblContrasena = new JLabel("Contrase\u00F1a");
-		lblContrasena.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblContrasena.setFont(new Font("Arial", Font.BOLD, 15));
 		lblContrasena.setBounds(29, 171, 112, 18);
 		panel.add(lblContrasena);
 		
 		textFieNombre = new JTextField();
-		textFieNombre.setBounds(29, 80, 184, 20);
+		textFieNombre.setBounds(29, 86, 184, 20);
 		panel.add(textFieNombre);
 		textFieNombre.setColumns(10);
 		
@@ -227,11 +228,11 @@ public class Registro extends JFrame {
 		comboBoxSexo.setBounds(280, 79, 96, 22);
 		panel.add(comboBoxSexo);
 	
-		btnContinuar = new JButton("Siguiente");
+		btnContinuar = new JButton("CONTINUAR");
 		btnContinuar.setBounds(290, 347, 116, 36);
 		panel.add(btnContinuar);
 		
-		btnVolver = new JButton("Cancelar");
+		btnVolver = new JButton("VOLVER");
 		btnVolver.setBounds(29, 347, 104, 36);
 		panel.add(btnVolver);
 		
@@ -240,24 +241,28 @@ public class Registro extends JFrame {
 		panel.add(passwordField);
 		
 		JLabel label = new JLabel("");
+		label.setForeground(Color.RED);
 		label.setBounds(386, 83, 48, 14);
 		panel.add(label);
 		
 		JLabel label_1 = new JLabel("");
+	
 		label_1.setBounds(386, 127, 48, 14);
 		panel.add(label_1);
 		
 		JLabel label_2 = new JLabel("");
+	
 		label_2.setBounds(386, 168, 48, 14);
 		panel.add(label_2);
 		
 		JLabel label_3 = new JLabel("");
+		
 		label_3.setBounds(386, 255, 48, 14);
 		panel.add(label_3);
 		
-		lblFechaNacimiento = new JLabel("Fecha nacimiento\r\n");
-		lblFechaNacimiento.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblFechaNacimiento.setBounds(223, 125, 165, 14);
+		lblFechaNacimiento = new JLabel("Fecha Nacimiento\r\n");
+		lblFechaNacimiento.setFont(new Font("Arial", Font.BOLD, 15));
+		lblFechaNacimiento.setBounds(211, 113, 165, 14);
 		panel.add(lblFechaNacimiento);
 		
 		textFecNac = new JTextField();
@@ -266,10 +271,12 @@ public class Registro extends JFrame {
 		panel.add(textFecNac);
 		
 		JLabel label_4 = new JLabel("");
+		
 		label_4.setBounds(386, 207, 48, 14);
 		panel.add(label_4);
 		
 		JLabel label_5 = new JLabel("");
+
 		label_5.setBounds(386, 303, 48, 14);
 		panel.add(label_5);
 	}

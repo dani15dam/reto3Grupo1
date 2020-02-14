@@ -27,7 +27,7 @@ public class LineasBBDD {
 	public static ArrayList<LineasBus> obtenerLineas() throws SQLException{
 		
 		Connection con= Conexion.conectar();
-		String sql="SELECT * FROM Linea ";
+		String sql="SELECT * FROM linea ";
 		
 		PreparedStatement ps=con.prepareStatement(sql);
 		
@@ -57,7 +57,7 @@ try {
 			
 		} catch (Exception e) {
 			
-			System.out.println("Error: Clase Contacto, método obtener linea");
+			System.out.println("Error: Clase Contacto, metodo obtener linea");
 			
 		}
 		

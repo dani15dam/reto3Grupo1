@@ -27,7 +27,7 @@ public class ParadasBBDD {
 			Connection con= Conexion.conectar();
 			
 			
-			String sql="select Nombre from Parada INNER JOIN linea_parada ON parada.Cod_Parada = linea_parada.Cod_Parada where linea_parada.cod_linea='"+cod_Linea+"';";
+			String sql="select Nombre, parada.Cod_Parada from parada INNER JOIN linea_parada ON parada.Cod_Parada = linea_parada.Cod_Parada where linea_parada.cod_linea='"+cod_Linea+"';";
 			
 			PreparedStatement ps=con.prepareStatement(sql);
 			
@@ -45,6 +45,7 @@ public class ParadasBBDD {
 					Paradas parada = new Paradas();
 					
 					parada.setNombre_parada(rs.getString("Nombre"));
+					parada.setCod_parada(rs.getString("Cod_Parada"));
 					
 					paradas.add(parada);
 				
@@ -57,7 +58,7 @@ public class ParadasBBDD {
 				
 			} catch (Exception e) {
 				
-				System.out.println("Error: Clase Contacto, método obtener paradas");
+				System.out.println("Error: Clase Contacto, mï¿½todo obtener paradas");
 				
 			}
 			

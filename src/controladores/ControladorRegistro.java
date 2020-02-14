@@ -12,7 +12,8 @@ import javax.swing.JOptionPane;
 
 import modelo.Cliente;
 import modelo.ClienteBD;
-
+import vista.Ida;
+import vista.IdaVuelta;
 import vista.InicioSesion;
 
 import vista.Pago;
@@ -21,13 +22,16 @@ import vista.Registro;
 public class ControladorRegistro implements ActionListener {
 
 	private Registro vistaRegistro;
-
-	public ControladorRegistro(Registro pRegistro) {
+	private Ida ventanaIda;		
+	private IdaVuelta ventanaIdaVuelta;
+	public ControladorRegistro(Registro pRegistro, Ida ventanaIda, IdaVuelta ventanaIdaVuelta) {
 
 		this.vistaRegistro = pRegistro;
-
+		
 		inicializarControlador();
-
+		
+		this.ventanaIda = ventanaIda;
+		this.ventanaIdaVuelta = ventanaIdaVuelta;
 	}
 
 	public void inicializarControlador() {
@@ -54,7 +58,7 @@ public class ControladorRegistro implements ActionListener {
 
 			vistaInicioSesion.setVisible(true);
 
-			ControladorEntrar controladorEntrar = new ControladorEntrar(vistaInicioSesion);
+			ControladorEntrar controladorEntrar = new ControladorEntrar(vistaInicioSesion, ventanaIda, ventanaIdaVuelta);
 
 			break;
 
@@ -66,7 +70,7 @@ public class ControladorRegistro implements ActionListener {
 					Pago ventanaPago = new Pago();
 					ventanaPago.setVisible(true);
 
-					ControladorPago controladorPago = new ControladorPago(ventanaPago);
+					ControladorPago controladorPago = new ControladorPago(ventanaPago, ventanaIda, ventanaIdaVuelta);
 
 					vistaRegistro.dispose();
 
@@ -84,7 +88,7 @@ public class ControladorRegistro implements ActionListener {
 	private void validarUsuario() throws SQLException {
 
 		String dni = this.vistaRegistro.getTextFieDni().getText();
-		String contrasena = this.vistaRegistro.getTextFieContraseña().getText();
+		String contrasena = this.vistaRegistro.getTextFieCont().getText();
 
 		ClienteBD clienteBD = new ClienteBD();
 
@@ -98,7 +102,7 @@ public class ControladorRegistro implements ActionListener {
 
 		if (vistaRegistro.getTextFieDni().getText().equals("") || vistaRegistro.getTextFieNombre().getText().equals("")
 				|| vistaRegistro.getTextFielApellido().getText().equals("")
-				|| vistaRegistro.getTextFieContraseña().getText().equals("")) {
+				|| vistaRegistro.getTextFieCont().getText().equals("")) {
 
 			aux = false;
 
@@ -121,7 +125,7 @@ public class ControladorRegistro implements ActionListener {
 			cliente.setSexo("M");
 		}
 
-		cliente.setContraseña(vistaRegistro.getTextFieContraseña().getText());
+		cliente.setCont(vistaRegistro.getTextFieCont().getText());
 
 		ClienteBD clienteBD = new ClienteBD();
 		clienteBD.mInsetarContacto(cliente);
