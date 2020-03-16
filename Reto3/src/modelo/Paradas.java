@@ -27,10 +27,10 @@ public class Paradas {
 	}
 	/**
 	 * inicializa los atributos
-	 * @param pCod_parada
-	 * @param pNombre_parada
-	 * @param pCalle
-	 * @param pCoordenadas
+	 * @param pCod_parada guarda el codigo de parada
+	 * @param pNombre_parada guarda el nombre de la parada
+	 * @param pCalle guarda la calle
+	 * @param pCoordenadas guarda las coordenadas
 	 */
 	public Paradas(String pCod_parada, String pNombre_parada , String pCalle,String pCoordenadas) {
 		super();
@@ -43,7 +43,7 @@ public class Paradas {
 	}
 	/**
 	 * los metodos get y set permiten obtener y modificar los atributos
-	 * @return
+	 * @return devuelve las variables
 	 */
 	public String getCod_parada() {
 		return cod_parada;

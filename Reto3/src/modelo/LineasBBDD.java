@@ -24,22 +24,22 @@ public class LineasBBDD {
 	}
 	/**
 	 * en este arraylist se inicializa el arraylist
-	 * @return
+	 * @return devuelve las lineas
 	 */
 	public ArrayList<LineasBus> getListaLineas() {
 		return listaLineas;
 	}
 	/**
 	 * este metodo permite la modificacion de la lista de lineas
-	 * @param listaLineas
+	 * @param listaLineas necesita un parametro
 	 */
 	public void setListaLineas(ArrayList<LineasBus> listaLineas) {
 		this.listaLineas = listaLineas;
 	}
 	/**
 	 * este metodo obtiene las lineas de la base de datos y las carga en la lista
-	 * @return
-	 * @throws SQLException
+	 * @return devuelve las lineas
+	 * @throws SQLException lanza excepcion
 	 */
 	public static ArrayList<LineasBus> obtenerLineas() throws SQLException{
 		/**

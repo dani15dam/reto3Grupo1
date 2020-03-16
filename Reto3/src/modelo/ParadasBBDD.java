@@ -29,9 +29,9 @@ public class ParadasBBDD {
 		
 		/**
 		 * obtiene las paradas de la base de datos
-		 * @param cod_Linea
-		 * @return
-		 * @throws SQLException
+		 * @param cod_Linea recibe un parametro de cod linea
+		 * @return devuelve las paradas
+		 * @throws SQLException lanza excepcion
 		 */
 		public static ArrayList<Paradas> obtenerParadas(String cod_Linea) throws SQLException{
 			/**

@@ -24,10 +24,10 @@ public class Autobus {
 	}
 	/**
 	 * este metodo inicializa los atributos
-	 * @param pCodBus
-	 * @param pNumPLazas
-	 * @param pConsumo
-	 * @param pColor
+	 * @param pCodBus variable del codigo
+	 * @param pNumPLazas variable del numero de plazas
+	 * @param pConsumo guarda el consumo
+	 * @param pColor guarda el color
 	 */
 	public Autobus(int pCodBus, int pNumPLazas,int pConsumo, String pColor){
 		this.codBus = pCodBus;
@@ -37,7 +37,7 @@ public class Autobus {
 	}
 	/**
 	 * los metodos get and set permiten obtener y modificar las variables
-	 * @return
+	 * @return devuelve las variables 
 	 */
 	public int getCodBus() {
 		return codBus;

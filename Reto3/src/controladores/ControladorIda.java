@@ -23,7 +23,10 @@ import modelo.PrecioBBDD;
 import vista.Ida;
 import vista.InicioSesion;
 import vista.Lineas;
-
+/**
+ * esta classe inicializara los botones de la vista y les dara una funcion
+ * @author Dani
+ */
 public class ControladorIda implements ActionListener {
 	/**
 	 * la variable ventanaIda nos permite acceder a la vista Ida
@@ -43,7 +46,7 @@ public class ControladorIda implements ActionListener {
 	private Fecha fechas = new Fecha();
 	/**
 	 * este metodo inicializa el controlador
-	 * @param pTrayecto
+	 * @param pTrayecto recibe un parametro de trayecto
 	 */
 	public ControladorIda(Ida pTrayecto) {
 
@@ -54,9 +57,9 @@ public class ControladorIda implements ActionListener {
 	}
 	/**
 	 * este metodo inicializa las variables y los metodos creados
-	 * @param pTrayecto
-	 * @param pVentanaLinea
-	 * @param pHora
+	 * @param pTrayecto recibe una variable trayecto
+	 * @param pVentanaLinea recibe una variable
+	 * @param pHora recibe variable
 	 */
 	public ControladorIda(Ida pTrayecto, Lineas pVentanaLinea, Hora pHora) {
 
@@ -205,9 +208,9 @@ public class ControladorIda implements ActionListener {
 
 	/**
 	 * este metodo calcula las distancias que hay entre las paradas
-	 * @return
-	 * @throws NumberFormatException
-	 * @throws SQLException
+	 * @return distancia
+	 * @throws NumberFormatException recibe solo numeros
+	 * @throws SQLException lanza excepcion
 	 */
 	public double distanciaCoord() throws NumberFormatException, SQLException {
 		/**
@@ -249,10 +252,10 @@ public class ControladorIda implements ActionListener {
 	}
 	/**
 	 * este metodo calcula el precio mediante la distancia
-	 * @param distancia
-	 * @return
-	 * @throws NumberFormatException
-	 * @throws SQLException
+	 * @param distancia recibe un parametro distancia
+	 * @return distancia
+	 * @throws NumberFormatException comprueba que es un numero
+	 * @throws SQLException lanza excepcion
 	 */
 	public double obtenerPrecio(double distancia) throws NumberFormatException, SQLException {
 		return  distanciaCoord() * 0.80 * 30 / 30;

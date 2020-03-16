@@ -37,10 +37,10 @@ public class LineasBus {
 	}
 	/**
 	 * este metodo inicia los atributos
-	 * @param pCod_lineas
-	 * @param pNombreBus
-	 * @param pAutobus
-	 * @param pMunicipio
+	 * @param pCod_lineas recoge el codigo de linea
+	 * @param pNombreBus recoge el nombre bus
+	 * @param pAutobus recoge el autobus
+	 * @param pMunicipio recoge el municipio
 	 */
 	public LineasBus(String pCod_lineas, String pNombreBus, String pAutobus,String pMunicipio) {
 		
@@ -53,7 +53,7 @@ public class LineasBus {
 	}
 	/**
 	 * los metodos get y set sirven para obtener y modificar los atributos
-	 * @return
+	 * @return devuelve las variables
 	 */
 	public String getCod_lineas() {
 		return cod_lineas;

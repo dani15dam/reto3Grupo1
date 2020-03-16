@@ -16,7 +16,7 @@ public class Hora {
 	}
 	/**
 	 * en eeste metodo se inicializa los atributos
-	 * @param pHora
+	 * @param pHora recibe un parametro hora
 	 */
 	public Hora(String pHora ) {
 		
@@ -26,14 +26,14 @@ public class Hora {
 	}
 	/**
 	 * este metodo permite obtener la hora
-	 * @return
+	 * @return hora
 	 */
 	public String getHora() {
 		return hora;
 	}
 	/**
 	 * este metodo permite modificar la hora
-	 * @param hora
+	 * @param hora recibe un parametro hora
 	 */
 	public void setHora(String hora) {
 		this.hora = hora;

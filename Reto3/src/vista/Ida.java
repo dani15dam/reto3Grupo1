@@ -84,14 +84,14 @@ public class Ida {
 	}
 	/**
 	 * permite obtener la ventana ida
-	 * @return
+	 * @return devuelve ida
 	 */
 	public JFrame getIda() {
 		return Ida;
 	}
 	/**
 	 * permite modificar la ventana ida
-	 * @param ida
+	 * @param ida inicializa la ventana ida
 	 */
 	public void setIda(JFrame ida) {
 		Ida = ida;

@@ -35,11 +35,11 @@ public class Precio {
 	}
 	/**
 	 * inicializa los atributos
-	 * @param longitud
-	 * @param latitud
-	 * @param precio
-	 * @param consumo
-	 * @param asientos
+	 * @param longitud guarda la longitud
+	 * @param latitud guarda la latitud
+	 * @param precio guarda el precio
+	 * @param consumo guarda el consumo
+	 * @param asientos guarda el numero de asientos
 	 */
 	public Precio(String longitud, String latitud, String precio, String consumo,String asientos ) {
 		
@@ -54,7 +54,7 @@ public class Precio {
 	}
 	/**
 	 * permiten obetener y modificar los atributos
-	 * @return
+	 * @return devuelve las variables
 	 */
 	public String getLatitud() {
 		return latitud;

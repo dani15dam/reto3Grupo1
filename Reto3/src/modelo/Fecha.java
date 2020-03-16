@@ -19,8 +19,8 @@ public class Fecha {
 	
 	/**
 	 * este metodo recoge la fecha seleccionada en el calendario
-	 * @param jd
-	 * @return
+	 * @param jd recibe un parametro
+	 * @return devuelve null
 	 */
 	public String getFecha(JDateChooser jd) {
 		
@@ -35,8 +35,8 @@ public class Fecha {
 	}
 	/**
 	 * este metodo convierte la fecha a string
-	 * @param Fecha
-	 * @return
+	 * @param Fecha recibe un parametro fecha
+	 * @return null
 	 */
 	public java.util.Date StringADate(String Fecha){
 		

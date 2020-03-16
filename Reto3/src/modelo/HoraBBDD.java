@@ -23,23 +23,23 @@ public class HoraBBDD {
 	}
 	/**
 	 * este metodo inicializa el arraylist
-	 * @return
+	 * @return devuelve el horario
 	 */
 	public ArrayList<Hora> getListaHora() {
 		return horario;
 	}
 	/**
 	 * en este metodo se puede modificar el arraylist
-	 * @param listaLineas
+	 * @param listaLineas recibe un parametro de lista lineas
 	 */
 	public void setListaHora(ArrayList<Hora> listaLineas) {
 		this.horario = listaLineas;
 	}
 	/**
 	 * en este metodo se accede a la base de datos para obtener las horas
-	 * @param cod_linea
-	 * @return
-	 * @throws SQLException
+	 * @param cod_linea necesita un parametro
+	 * @return devuelve las horas
+	 * @throws SQLException lanza excepcion
 	 */
 	public static ArrayList<Hora> obtenerHoras(String cod_linea) throws SQLException{
 		

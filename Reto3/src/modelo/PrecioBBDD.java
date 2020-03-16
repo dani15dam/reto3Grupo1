@@ -15,9 +15,9 @@ import conexion.Conexion;
 public class PrecioBBDD {
 	/**
 	 * obtiene la lngitud del origen
-	 * @param cod_parada
-	 * @return
-	 * @throws SQLException
+	 * @param cod_parada recibe un parametro de cod parada
+	 * @return devuelve los resultados
+	 * @throws SQLException lanza excepcion
 	 */
 	public static Double obtenerLongOrigen(String cod_parada) throws SQLException {
 		Double result = null;
@@ -61,9 +61,9 @@ public class PrecioBBDD {
 	}
 	/**
 	 * obtiene la latitud del origen accediendo a la base de datos
-	 * @param cod_parada
-	 * @return
-	 * @throws SQLException
+	 * @param cod_parada recibe un parametro
+	 * @return devuelve resultado
+	 * @throws SQLException lanza excepcion
 	 */
 	public static Double obtenerLatOrigen(String cod_parada) throws SQLException {
 		Double result = null;
@@ -106,9 +106,9 @@ public class PrecioBBDD {
 	}
 	/**
 	 * ontiene de la base de datos la lngitud del destino
-	 * @param cod_parada
-	 * @return
-	 * @throws SQLException
+	 * @param cod_parada recibe parametro
+	 * @return devuelve resultado
+	 * @throws SQLException lanza excepcion
 	 */
 	public static Double obtenerLongDestino(String cod_parada) throws SQLException {
 		Double result = null;
@@ -154,9 +154,9 @@ public class PrecioBBDD {
 	}
 	/**
 	 * obtiene la latitud de la base de datos
-	 * @param cod_parada
-	 * @return
-	 * @throws SQLException
+	 * @param cod_parada recibe parametro
+	 * @return resultado
+	 * @throws SQLException lanza excepcion
 	 */
 	public static Double obtenerLatDestino(String cod_parada) throws SQLException {
 

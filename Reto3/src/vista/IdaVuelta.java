@@ -188,7 +188,7 @@ public class IdaVuelta {
 
 	/**
 	 * metodos get y set permiten obtener los datos y modificarlos
-	 * @return
+	 * @return devuelve los resultados
 	 */
 	public JComboBox getComboBoxIdaVueltaDestino() {
 		return comboBoxIdaVueltaDestino;

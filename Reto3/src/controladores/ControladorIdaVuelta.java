@@ -26,7 +26,11 @@ import vista.Ida;
 import vista.IdaVuelta;
 import vista.InicioSesion;
 import vista.Lineas;
-
+/**
+ * controla las funciones de la ventana ida y vuelta
+ * @author Dani
+ *
+ */
 public class ControladorIdaVuelta implements ActionListener {
 	/**
 	 * la variable ventanaIda nos permite acceder a la vista Ida y vuelta
@@ -52,9 +56,9 @@ public class ControladorIdaVuelta implements ActionListener {
 	}
 	/**
 	 * inicializa los atributos y los metodos
-	 * @param pTrayectoIda
-	 * @param pVentanaLinea
-	 * @param pHora
+	 * @param pTrayectoIda recibe un parametro
+	 * @param pVentanaLinea recibe un parametro
+	 * @param pHora recibe una hora
 	 */
 	public ControladorIdaVuelta(IdaVuelta pTrayectoIda, Lineas pVentanaLinea, Hora pHora) {
 
@@ -218,9 +222,9 @@ public class ControladorIdaVuelta implements ActionListener {
 	}
 	/**
 	 * este metodo calcula la distancia entre las cordenadas
-	 * @return
-	 * @throws NumberFormatException
-	 * @throws SQLException
+	 * @return devuelve 
+	 * @throws NumberFormatException recoge solo numeros
+	 * @throws SQLException lanza excepion
 	 */
 	public double distanciaCoord() throws NumberFormatException, SQLException {
 	
@@ -260,10 +264,10 @@ public class ControladorIdaVuelta implements ActionListener {
 	}
 	/**
 	 * este metodo calcula el precio teniendo en cuneta la distancia
-	 * @param distancia
-	 * @return
-	 * @throws NumberFormatException
-	 * @throws SQLException
+	 * @param distancia necesita un parametro de distancia
+	 * @return devuelve la distancia
+	 * @throws NumberFormatException asegura que recibe numeros
+	 * @throws SQLException lanza eexcepcion
 	 */
 	public double obtenerPrecio(double distancia) throws NumberFormatException, SQLException {
 		return distanciaCoord() * 8 * 30 / 12;
