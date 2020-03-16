@@ -13,6 +13,9 @@ public class Autobus {
 	 * variable del consumo
 	 */
 	private int consumo;
+	/**
+	 * variable del color
+	 */
 	private String color;
 
 	
