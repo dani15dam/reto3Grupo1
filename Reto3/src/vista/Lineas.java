@@ -20,18 +20,38 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JRadioButton;
 import javax.swing.plaf.basic.BasicBorders.RadioButtonBorder;
+import java.awt.Font;
+import java.awt.Color;
 
-
+/**
+ * esta clase tiene la ventana de lineas
+ * @author Dani
+ *
+ */
 public class Lineas {
-
+	/**
+	 * obtiene la ventana lineas
+	 */
 	private JFrame lineas;
+	/**
+	 * permite seguir con la siguiente ventana
+	 */
 	private JButton btnSiguienteLineas;
+	/**
+	 * lista desplegable con el tipo de lineas
+	 */
 	private JComboBox tipoLinea;
+	/**
+	 * lsita desplegable con las paradas
+	 */
 	private JComboBox <Paradas>comboBoxLineas;
 	
 	//get-set
 	
-	
+	/**
+	 * metodos get y set para obtener los botones y set para la modificacion de las listas 
+	 * @return retorna una variable
+	 */
 	public JButton getBtnSiguienteLineas() {
 		return btnSiguienteLineas;
 	}
@@ -105,17 +125,22 @@ public class Lineas {
 	 */
 	private void initialize() {
 		lineas = new JFrame();
+		lineas.getContentPane().setBackground(Color.WHITE);
 		lineas.setBounds(100, 100, 450, 352);
 		lineas.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		lineas.getContentPane().setLayout(null);
 
 		JPanel panel = new JPanel();
+		panel.setBackground(Color.WHITE);
+		panel.setForeground(Color.WHITE);
 		panel.setBounds(0, 0, 434, 302);
 		lineas.getContentPane().add(panel);
 		panel.setLayout(null);
 
 		JLabel lblLineas = new JLabel("Lineas");
-		lblLineas.setBounds(191, 11, 46, 14);
+		lblLineas.setForeground(new Color(165, 42, 42));
+		lblLineas.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblLineas.setBounds(191, 11, 71, 23);
 		panel.add(lblLineas);
 
 		tipoLinea = new JComboBox();

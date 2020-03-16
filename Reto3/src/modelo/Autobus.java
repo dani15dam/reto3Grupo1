@@ -1,8 +1,17 @@
 package modelo;
 
 public class Autobus {
+	/**
+	 * variable del codigo de autobus
+	 */
 	private int codBus;
+	/**
+	 * variable de numeros de plazas
+	 */
 	private int numPLazas;
+	/**
+	 * variable del consumo
+	 */
 	private int consumo;
 	private String color;
 
@@ -10,14 +19,23 @@ public class Autobus {
 	public Autobus(){
 		
 	}
-	
+	/**
+	 * este metodo inicializa los atributos
+	 * @param pCodBus
+	 * @param pNumPLazas
+	 * @param pConsumo
+	 * @param pColor
+	 */
 	public Autobus(int pCodBus, int pNumPLazas,int pConsumo, String pColor){
 		this.codBus = pCodBus;
 		this.numPLazas = pNumPLazas;
 		this.consumo = pConsumo;
 		this.color = pColor;
 	}
-
+	/**
+	 * los metodos get and set permiten obtener y modificar las variables
+	 * @return
+	 */
 	public int getCodBus() {
 		return codBus;
 	}

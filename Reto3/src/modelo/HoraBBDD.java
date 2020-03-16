@@ -7,25 +7,46 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import conexion.Conexion;
-
+/**
+ * este metodo guardara las horas obtenidas de una base de datos
+ * @author Dani
+ *
+ */
 public class HoraBBDD {
+	/**
+	 * este arraylist guardara todas las horas disponibles
+	 */
 	private ArrayList<Hora>horario;
 	
 	public HoraBBDD(){
 		
 	}
-
+	/**
+	 * este metodo inicializa el arraylist
+	 * @return
+	 */
 	public ArrayList<Hora> getListaHora() {
 		return horario;
 	}
-
+	/**
+	 * en este metodo se puede modificar el arraylist
+	 * @param listaLineas
+	 */
 	public void setListaHora(ArrayList<Hora> listaLineas) {
 		this.horario = listaLineas;
 	}
-
+	/**
+	 * en este metodo se accede a la base de datos para obtener las horas
+	 * @param cod_linea
+	 * @return
+	 * @throws SQLException
+	 */
 	public static ArrayList<Hora> obtenerHoras(String cod_linea) throws SQLException{
 		
 		Connection con= Conexion.conectar();
+		/**
+		 * en esta variable se hace la consulta a la base de datos
+		 */
 		String sql="SELECT DISTINCT Hora FROM linea_autobus where cod_linea='A0651'AND Hora > SYSDATE()";
 	
 		PreparedStatement ps=con.prepareStatement(sql);

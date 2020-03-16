@@ -1,33 +1,60 @@
 package vista;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.JComboBox;
-import javax.swing.DefaultComboBoxModel;
-import javax.swing.JLabel;
-import javax.swing.JTextField;
-import controladores.ControladorIda;
-import modelo.Fecha;
-
-import javax.swing.JButton;
 import java.awt.Font;
-import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.util.Date;
-import java.awt.event.ActionEvent;
-import com.toedter.calendar.JCalendar;
+
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+
 import com.toedter.calendar.JDateChooser;
 
-public class Ida {
+import controladores.ControladorIda;
+import modelo.Fecha;
+import java.awt.Color;
 
+public class Ida {
+	/**
+	 * obtiene la ventana ida
+	 */
 	private JFrame Ida;
+	/**
+	 * espacio para un texto
+	 */
 	private JTextField precioIda;
-	private JTextField totalIda;
+	/**
+	 * lista que muestra una serie de opciones de paradas
+	 */
 	private JComboBox<String> trayectoIda;
+	/**
+	 * muestra en una lista las horas
+	 */
 	private JComboBox<String> horaIda;
+	/**
+	 * señala la cantidad de billetes
+	 */
 	private JComboBox<String> cantidadIda;
+	/**
+	 * lista de paradas para el destino
+	 */
 	private JComboBox<String> cbDestinoIda;
+	/**
+	 * variable del  boton
+	 */
 	private JButton btnSiguienteIda;
+	/**
+	 * variable del boton cancelar
+	 */
 	private JButton btnCancelarIda;
+	/**
+	 * calendario para seleccionar fecha
+	 */
 	private JDateChooser dateChooserFechaIda;
 	Fecha fechas=new Fecha();
 	
@@ -35,7 +62,9 @@ public class Ida {
 	 * Launch the application.
 	 */
 	public static void mInicioIda() {
-
+		/**
+		 * abre la ventana y cierra la anterior a esta
+		 */
 		try {
 			Ida ida = new Ida();
 			ida.Ida.setVisible(true);
@@ -53,11 +82,17 @@ public class Ida {
 	public Ida() {
 		initialize();
 	}
-
+	/**
+	 * permite obtener la ventana ida
+	 * @return
+	 */
 	public JFrame getIda() {
 		return Ida;
 	}
-
+	/**
+	 * permite modificar la ventana ida
+	 * @param ida
+	 */
 	public void setIda(JFrame ida) {
 		Ida = ida;
 	}
@@ -67,11 +102,13 @@ public class Ida {
 	 */
 	private void initialize() {
 		Ida = new JFrame();
+		Ida.getContentPane().setBackground(Color.WHITE);
 		Ida.setBounds(100, 100, 468, 375);
 		Ida.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		Ida.getContentPane().setLayout(null);
 
 		JPanel panel = new JPanel();
+		panel.setBackground(Color.WHITE);
 		panel.setBounds(0, 0, 452, 325);
 		Ida.getContentPane().add(panel);
 		panel.setLayout(null);
@@ -85,6 +122,7 @@ public class Ida {
 		panel.add(horaIda);
 
 		cantidadIda = new JComboBox();
+		cantidadIda.setBackground(Color.WHITE);
 		cantidadIda.setBounds(125, 137, 40, 20);
 		cantidadIda.setModel(new DefaultComboBoxModel(new String[] { "1", "2","3","4","5","6","7","8","9" }));
 		panel.add(cantidadIda);
@@ -95,31 +133,29 @@ public class Ida {
 		panel.add(lblPrecio);
 
 		precioIda = new JTextField();
+		precioIda.setBackground(Color.WHITE);
 		precioIda.setBounds(340, 137, 86, 20);
 		panel.add(precioIda);
 		precioIda.setColumns(10);
-
-		totalIda = new JTextField();
-		totalIda.setBounds(340, 178, 86, 20);
-		panel.add(totalIda);
-		totalIda.setColumns(10);
-
-		JLabel lblTotal = new JLabel("total");
-		lblTotal.setBounds(284, 181, 46, 14);
-		panel.add(lblTotal);
+		precioIda.setEditable(false);
 
 		btnSiguienteIda = new JButton("siguiente");
+		btnSiguienteIda.setBackground(Color.WHITE);
 		btnSiguienteIda.setBounds(350, 291, 89, 23);
 		panel.add(btnSiguienteIda);
 		
 
 		btnCancelarIda = new JButton("Cancelar");
+		btnCancelarIda.setBackground(Color.WHITE);
+		btnCancelarIda.setForeground(new Color(0, 0, 0));
 		btnCancelarIda.setBounds(10, 291, 89, 23);
 		panel.add(btnCancelarIda);
 
 		JLabel lblIda = new JLabel("Ida");
+		lblIda.setForeground(new Color(165, 42, 42));
+		lblIda.setBackground(Color.WHITE);
 		lblIda.setFont(new Font("Tahoma", Font.ITALIC, 23));
-		lblIda.setBounds(165, 11, 60, 28);
+		lblIda.setBounds(200, 11, 60, 28);
 		panel.add(lblIda);
 		
 		cbDestinoIda = new JComboBox();
@@ -176,6 +212,10 @@ public class Ida {
 	public JButton getBtnCancelarIda() {
 		return btnCancelarIda;
 	}
+	
+	public JTextField getPrecioIda () {
+		return precioIda;
+	}
 
 	public void setBtnCancelarIda(JButton btnCancelarIda) {
 		this.btnCancelarIda = btnCancelarIda;
@@ -195,6 +235,7 @@ public class Ida {
 		return "Ida [dateChooserFechaIda=" + dateChooserFechaIda + "]";
 	}
 
+	
 	
 
 
