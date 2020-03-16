@@ -107,6 +107,7 @@ public class Lineas {
 
 	/**
 	 * JoptionPane.showmessage Create the application.
+	 * inicializa
 	 */
 	public Lineas() {
 		initialize();
