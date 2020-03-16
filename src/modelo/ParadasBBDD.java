@@ -7,10 +7,16 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import conexion.Conexion;
 
-
+/**
+ * en esta clase se obtienen las paradas de la base de datos
+ * @author Dani
+ *
+ */
 public class ParadasBBDD {
 		
-		
+		/**
+		 * esta lista guardara las paradas 
+		 */
 		private  ArrayList<Paradas> listaParadas;
 
 
@@ -21,12 +27,21 @@ public class ParadasBBDD {
 		}
 
 		
-		
+		/**
+		 * obtiene las paradas de la base de datos
+		 * @param cod_Linea
+		 * @return
+		 * @throws SQLException
+		 */
 		public static ArrayList<Paradas> obtenerParadas(String cod_Linea) throws SQLException{
-			
+			/**
+			 * conecta a la base de datos
+			 */
 			Connection con= Conexion.conectar();
 			
-			
+			/**
+			 * realiza la conulta a la base de datos
+			 */
 			String sql="select Nombre, parada.Cod_Parada from parada INNER JOIN linea_parada ON parada.Cod_Parada = linea_parada.Cod_Parada where linea_parada.cod_linea='"+cod_Linea+"';";
 			
 			PreparedStatement ps=con.prepareStatement(sql);

@@ -1,4 +1,4 @@
-package controladores;
+ package controladores;
 
 import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;

@@ -22,18 +22,51 @@ import java.awt.Font;
 
 
 public class IdaVuelta {
-
+	/**
+	 * obtiene la ventana ida y vuelta
+	 */
 	private JFrame idaVuelta;
+	/**
+	 * espacio donde estara el precio
+	 */
 	private JTextField precioIda2;
+
 	protected Object ida_vuelta;
+	/**
+	 * permite continuar con la siguiente ventana
+	 */
 	private JButton btnSiguienteIdaVuelta;
+	/**
+	 * regresa ala ventana anterior
+	 */
 	private JButton btnCancelarIdaVuelta;
+	/**
+	 * lista de los trayectos
+	 */
 	private JComboBox <String> trayectoIda2;
+	/**
+	 * lista de las paradas de destino
+	 */
 	private JComboBox comboBoxIdaVueltaDestino;
+	/**
+	 * cantidad de billetes
+	 */
 	private JComboBox cantidadIda2;
+	/**
+	 * lista despleglable de la ida
+	 */
 	private JComboBox horaIda;
+	/**
+	 * lista desplegable de la hora
+	 */
 	private JComboBox horaVuelta;
+	/**
+	 * calendario para marcar el dia de ida
+	 */
 	private JDateChooser dateChooserIda;
+	/**
+	 * calendario para marcar la vuelta
+	 */
 	private JDateChooser dateChooserVuelta;
 
 	/**
@@ -153,7 +186,10 @@ public class IdaVuelta {
 		panel.add(lblNewLabel_4);
 	}
 
-
+	/**
+	 * metodos get y set permiten obtener los datos y modificarlos
+	 * @return
+	 */
 	public JComboBox getComboBoxIdaVueltaDestino() {
 		return comboBoxIdaVueltaDestino;
 	}

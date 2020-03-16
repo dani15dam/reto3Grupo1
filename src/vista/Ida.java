@@ -20,15 +20,41 @@ import modelo.Fecha;
 import java.awt.Color;
 
 public class Ida {
-
+	/**
+	 * obtiene la ventana ida
+	 */
 	private JFrame Ida;
+	/**
+	 * espacio para un texto
+	 */
 	private JTextField precioIda;
+	/**
+	 * lista que muestra una serie de opciones de paradas
+	 */
 	private JComboBox<String> trayectoIda;
+	/**
+	 * muestra en una lista las horas
+	 */
 	private JComboBox<String> horaIda;
+	/**
+	 * señala la cantidad de billetes
+	 */
 	private JComboBox<String> cantidadIda;
+	/**
+	 * lista de paradas para el destino
+	 */
 	private JComboBox<String> cbDestinoIda;
+	/**
+	 * variable del  boton
+	 */
 	private JButton btnSiguienteIda;
+	/**
+	 * variable del boton cancelar
+	 */
 	private JButton btnCancelarIda;
+	/**
+	 * calendario para seleccionar fecha
+	 */
 	private JDateChooser dateChooserFechaIda;
 	Fecha fechas=new Fecha();
 	
@@ -36,7 +62,9 @@ public class Ida {
 	 * Launch the application.
 	 */
 	public static void mInicioIda() {
-
+		/**
+		 * abre la ventana y cierra la anterior a esta
+		 */
 		try {
 			Ida ida = new Ida();
 			ida.Ida.setVisible(true);
@@ -54,11 +82,17 @@ public class Ida {
 	public Ida() {
 		initialize();
 	}
-
+	/**
+	 * permite obtener la ventana ida
+	 * @return
+	 */
 	public JFrame getIda() {
 		return Ida;
 	}
-
+	/**
+	 * permite modificar la ventana ida
+	 * @param ida
+	 */
 	public void setIda(JFrame ida) {
 		Ida = ida;
 	}

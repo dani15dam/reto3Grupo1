@@ -9,13 +9,19 @@ import com.toedter.calendar.JDateChooser;
 import vista.Ida;
 
 public class Fecha {
-	
+	/**
+	 * variable de la ventana ida
+	 */
 	private Ida ventanaIda;
 
 	
 	SimpleDateFormat Formato = new SimpleDateFormat("dd-MM-yyyy");
 	
-	
+	/**
+	 * este metodo recoge la fecha seleccionada en el calendario
+	 * @param jd
+	 * @return
+	 */
 	public String getFecha(JDateChooser jd) {
 		
 		if(jd.getDate()!=null) {
@@ -27,7 +33,11 @@ public class Fecha {
 		}	
 		
 	}
-	
+	/**
+	 * este metodo convierte la fecha a string
+	 * @param Fecha
+	 * @return
+	 */
 	public java.util.Date StringADate(String Fecha){
 		
 		SimpleDateFormat formato_del_texto = new SimpleDateFormat("dd-MM-yyyy");

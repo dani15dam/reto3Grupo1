@@ -1,12 +1,30 @@
 package modelo;
-
+/**
+ * esta clase guardara el precio
+ * @author Dani
+ *
+ */
 public class Precio {
 	
-	
+	/**
+	 * guarada la latitud
+	 */
 	private String latitud;
+	/**
+	 * guarda la longitud
+	 */
 	private String longitud;
+	/**
+	 * guarda el precio
+	 */
 	private String precio;
+	/**
+	 * guarda el consumo
+	 */
 	private String consumo;
+	/**
+	 * guarda el numero de asientos
+	 */
 	private String asientos;
 
 	
@@ -15,7 +33,14 @@ public class Precio {
 	public Precio() {
 		
 	}
-	
+	/**
+	 * inicializa los atributos
+	 * @param longitud
+	 * @param latitud
+	 * @param precio
+	 * @param consumo
+	 * @param asientos
+	 */
 	public Precio(String longitud, String latitud, String precio, String consumo,String asientos ) {
 		
 		this.latitud = latitud;
@@ -27,7 +52,10 @@ public class Precio {
 				
 		
 	}
-
+	/**
+	 * permiten obetener y modificar los atributos
+	 * @return
+	 */
 	public String getLatitud() {
 		return latitud;
 	}

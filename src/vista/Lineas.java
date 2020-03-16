@@ -23,17 +23,35 @@ import javax.swing.plaf.basic.BasicBorders.RadioButtonBorder;
 import java.awt.Font;
 import java.awt.Color;
 
-
+/**
+ * esta clase tiene la ventana de lineas
+ * @author Dani
+ *
+ */
 public class Lineas {
-
+	/**
+	 * obtiene la ventana lineas
+	 */
 	private JFrame lineas;
+	/**
+	 * permite seguir con la siguiente ventana
+	 */
 	private JButton btnSiguienteLineas;
+	/**
+	 * lista desplegable con el tipo de lineas
+	 */
 	private JComboBox tipoLinea;
+	/**
+	 * lsita desplegable con las paradas
+	 */
 	private JComboBox <Paradas>comboBoxLineas;
 	
 	//get-set
 	
-	
+	/**
+	 * metodos get y set para obtener los botones y set para la modificacion de las listas 
+	 * @return retorna una variable
+	 */
 	public JButton getBtnSiguienteLineas() {
 		return btnSiguienteLineas;
 	}

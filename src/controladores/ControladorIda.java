@@ -25,14 +25,26 @@ import vista.InicioSesion;
 import vista.Lineas;
 
 public class ControladorIda implements ActionListener {
-
+	/**
+	 * la variable ventanaIda nos permite acceder a la vista Ida
+	 */
 	private Ida ventanaIda;
+	/**
+	 * la variable ventanaLinea nos permite acceder a la vista Linea
+	 */
 	private Lineas ventanaLinea;
+	/**
+	 * la variable ventanaHora nos permite acceder a los datos que hay en la hora
+	 */
 	private Hora ventanaHora;
-	private Fecha fechaActual;
-
+	/**
+	 * la variable fecha no permite acceder a los datos del objeto
+	 */
 	private Fecha fechas = new Fecha();
-
+	/**
+	 * este metodo inicializa el controlador
+	 * @param pTrayecto
+	 */
 	public ControladorIda(Ida pTrayecto) {
 
 		this.ventanaIda = pTrayecto;
@@ -40,7 +52,12 @@ public class ControladorIda implements ActionListener {
 		inicializarControlador();
 
 	}
-
+	/**
+	 * este metodo inicializa las variables y los metodos creados
+	 * @param pTrayecto
+	 * @param pVentanaLinea
+	 * @param pHora
+	 */
 	public ControladorIda(Ida pTrayecto, Lineas pVentanaLinea, Hora pHora) {
 
 		this.ventanaIda = pTrayecto;
@@ -65,7 +82,9 @@ public class ControladorIda implements ActionListener {
 	public ControladorIda() {
 
 	}
-
+	/**
+	 * este metodo llama a los botones de la vista 
+	 */
 	public void inicializarControlador() {
 
 		this.ventanaIda.getBtnSiguienteIda().addActionListener(this);
@@ -81,11 +100,15 @@ public class ControladorIda implements ActionListener {
 		this.ventanaIda.getBtnCancelarIda().setActionCommand("cancelar");
 
 	}
-
+	/**
+	 * este metodo da las funciones a cada boton de la vista
+	 */
 	public void actionPerformed(ActionEvent e) {
 
 		String botonPulsado = e.getActionCommand();
-
+		/**
+		 * con el switch dependiendo del boton pulsado el programa realizara una funcion u otra 
+		 */
 		switch (botonPulsado) {
 		case "siguiente":
 
@@ -122,9 +145,13 @@ public class ControladorIda implements ActionListener {
 
 		}
 	}
-
+	/**
+	 * este metodo rellena la lista desplegable de paradas
+	 */
 	public void rellenarListaParadas() {
-
+		/**
+		 * se inicializa el arraylist del objeto paradas
+		 */
 		ArrayList<Paradas> paradas = new ArrayList<Paradas>();
 		LineasBus linea = (LineasBus) this.ventanaLinea.getComboBoxLineas().getSelectedItem();
 
@@ -144,7 +171,9 @@ public class ControladorIda implements ActionListener {
 
 		}
 	}
-
+	/**
+	 * este metodo rellena la lista desplegable de las horas
+	 */
 	public void rellenarHoras() {
 
 		ArrayList<Hora> hora = new ArrayList<Hora>();
@@ -167,26 +196,43 @@ public class ControladorIda implements ActionListener {
 		}
 
 	}
-
+	/**
+	 * este metodo prohibe seleccionar en el candelario una fecha anterior a la actual
+	 */
 	public void deshabilitarFecha() {
 		this.ventanaIda.getDateChooserFechaIda().setMinSelectableDate(new Date());
 	}
-//	public void JcomboBoxItemStateChanged() {
-//		if (this.ventanaIda.getTrayectoIda().getItemCount()>0) {
-//			
-//		}
-//	}
 
+	/**
+	 * este metodo calcula las distancias que hay entre las paradas
+	 * @return
+	 * @throws NumberFormatException
+	 * @throws SQLException
+	 */
 	public double distanciaCoord() throws NumberFormatException, SQLException {
+		/**
+		 * este arraylist recoge los precios
+		 */
 		ArrayList<Precio> preciodistancias = new ArrayList<Precio>();
 
 		Paradas origen = (Paradas) this.ventanaIda.getTrayectoIda().getSelectedItem();
 		
 		Paradas destino = (Paradas) this.ventanaIda.getCbDestinoIda().getSelectedItem();
-
+		/**
+		 * esta variable obtiene la longitud del origen
+		 */
 		double origenLongitud = Double.parseDouble(PrecioBBDD.obtenerLongOrigen(origen.getCod_parada()).toString());
+		/**
+		 *  esta variable obtiene la latitud del origen
+		 */
 		double origenLatitud = Double.parseDouble(PrecioBBDD.obtenerLatOrigen(origen.getCod_parada()).toString());
+		/**
+		 *  esta variable obtiene la longitud del destino
+		 */
 		double destinoLongitud = Double.parseDouble(PrecioBBDD.obtenerLongDestino(destino.getCod_parada()).toString());
+		/**
+		 *  esta variable obtiene la latitud del destino
+		 */
 		double destinoLatitud = Double.parseDouble(PrecioBBDD.obtenerLatDestino(destino.getCod_parada()).toString());
 
 		double radioTierra = 6371;
@@ -201,7 +247,13 @@ public class ControladorIda implements ActionListener {
 
 		return distancia;
 	}
-
+	/**
+	 * este metodo calcula el precio mediante la distancia
+	 * @param distancia
+	 * @return
+	 * @throws NumberFormatException
+	 * @throws SQLException
+	 */
 	public double obtenerPrecio(double distancia) throws NumberFormatException, SQLException {
 		return  distanciaCoord() * 0.80 * 30 / 30;
 	}
@@ -209,7 +261,11 @@ public class ControladorIda implements ActionListener {
 	public JTextField getPrecio() {
 		return ventanaIda.getPrecioIda();
 	}
-	
+	/**
+	 * esta clase permite que al pulsar seleccionar en e arraylist las distancias el precio se rellene 
+	 * @author Dani
+	 *
+	 */
 	class Calculadora implements ItemListener {
 		
 		private ControladorIda controlador;
@@ -223,7 +279,9 @@ public class ControladorIda implements ActionListener {
 		public void itemStateChanged(ItemEvent e) {
 			compute();
 		}
-		
+		/**
+		 * este metodo rellena el precio
+		 */
 		public void compute() {
 			try {
 				double distancia = controlador.distanciaCoord();
