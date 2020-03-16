@@ -1,26 +1,26 @@
 package modelo;
 
 public class Cliente {
-	
+
 	private String dni;
 	private String nombre;
 	private String apellidos;
 	private String sexo;
 	private String cont;
 	private String fechaNaci;
-	
+
 	public Cliente() {
 		super();
 	}
 
-	public Cliente(String dni, String nombre, String apellidos, String sexo, String cont,String fechaNacimi) {
+	public Cliente(String dni, String nombre, String apellidos, String sexo, String cont, String fechaNacimi) {
 		super();
 		this.dni = dni;
 		this.nombre = nombre;
 		this.apellidos = apellidos;
 		this.sexo = sexo;
 		this.cont = cont;
-		this.fechaNaci=fechaNacimi;
+		this.fechaNaci = fechaNacimi;
 	}
 
 	public String getDni() {
@@ -28,7 +28,7 @@ public class Cliente {
 	}
 
 	public void setDni(String dni) {
-		this.dni=dni ;
+		this.dni = dni;
 	}
 
 	public String getNombre() {
@@ -70,7 +70,5 @@ public class Cliente {
 	public String setFechaNaci(String fechaNaci) {
 		return this.fechaNaci = fechaNaci;
 	}
-
-
 
 }

@@ -5,10 +5,9 @@ import java.util.ArrayList;
 import controladores.ControladorIda;
 import vista.Ida;
 
-	
 /**
- * clase recogera las lineas de autobus
- * esta 
+ * clase recogera las lineas de autobus esta
+ * 
  * @author Dani
  *
  */
@@ -29,30 +28,31 @@ public class LineasBus {
 	 * guarda el municipio
 	 */
 	private String municipio;
-	
-		
-	
+
 	public LineasBus() {
-		
+
 	}
+
 	/**
 	 * este metodo inicia los atributos
+	 * 
 	 * @param pCod_lineas recoge el codigo de linea
-	 * @param pNombreBus recoge el nombre bus
-	 * @param pAutobus recoge el autobus
-	 * @param pMunicipio recoge el municipio
+	 * @param pNombreBus  recoge el nombre bus
+	 * @param pAutobus    recoge el autobus
+	 * @param pMunicipio  recoge el municipio
 	 */
-	public LineasBus(String pCod_lineas, String pNombreBus, String pAutobus,String pMunicipio) {
-		
-		this.cod_lineas= pCod_lineas;
-		this.nombre_bus= pNombreBus ;
-		this.autobus=pAutobus;
+	public LineasBus(String pCod_lineas, String pNombreBus, String pAutobus, String pMunicipio) {
+
+		this.cod_lineas = pCod_lineas;
+		this.nombre_bus = pNombreBus;
+		this.autobus = pAutobus;
 		this.municipio = pMunicipio;
-		
-		
+
 	}
+
 	/**
 	 * los metodos get y set sirven para obtener y modificar los atributos
+	 * 
 	 * @return devuelve las variables
 	 */
 	public String getCod_lineas() {
@@ -86,13 +86,14 @@ public class LineasBus {
 	public void setMunicipio(String municipio) {
 		this.municipio = municipio;
 	}
+
 	/**
 	 * cambia a string
 	 */
 	public String toString() {
-		
+
 		return this.nombre_bus;
-		
+
 	}
-		
+
 }

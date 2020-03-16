@@ -8,8 +8,11 @@ import java.util.ArrayList;
 
 import conexion.Conexion;
 import vista.Lineas;
+
 /**
- * esta clase accedera a la base de datos y obtendra los datos para guardarlos en un arraylist
+ * esta clase accedera a la base de datos y obtendra los datos para guardarlos
+ * en un arraylist
+ * 
  * @author Dani
  *
  */
@@ -17,75 +20,78 @@ public class LineasBBDD {
 	/**
 	 * en este arraylist se guardara las lineas
 	 */
-	private ArrayList<LineasBus>listaLineas;
-	
-	public LineasBBDD(){
-		
+	private ArrayList<LineasBus> listaLineas;
+
+	public LineasBBDD() {
+
 	}
+
 	/**
 	 * en este arraylist se inicializa el arraylist
+	 * 
 	 * @return devuelve las lineas
 	 */
 	public ArrayList<LineasBus> getListaLineas() {
 		return listaLineas;
 	}
+
 	/**
 	 * este metodo permite la modificacion de la lista de lineas
+	 * 
 	 * @param listaLineas necesita un parametro
 	 */
 	public void setListaLineas(ArrayList<LineasBus> listaLineas) {
 		this.listaLineas = listaLineas;
 	}
+
 	/**
 	 * este metodo obtiene las lineas de la base de datos y las carga en la lista
+	 * 
 	 * @return devuelve las lineas
 	 * @throws SQLException lanza excepcion
 	 */
-	public static ArrayList<LineasBus> obtenerLineas() throws SQLException{
+	public static ArrayList<LineasBus> obtenerLineas() throws SQLException {
 		/**
 		 * conecta a la base de datos
 		 */
-		Connection con= Conexion.conectar();
+		Connection con = Conexion.conectar();
 		/**
 		 * realiza la consulta a la base de datos
 		 */
-		String sql="SELECT * FROM linea ";
-		
-		PreparedStatement ps=con.prepareStatement(sql);
-		
-		ResultSet rs=ps.executeQuery();
-		
+		String sql = "SELECT * FROM linea ";
 
-		ArrayList<LineasBus> lineas= new ArrayList<LineasBus>();
+		PreparedStatement ps = con.prepareStatement(sql);
 
-try {
-			
-			ps=con.prepareStatement(sql);
-		
+		ResultSet rs = ps.executeQuery();
+
+		ArrayList<LineasBus> lineas = new ArrayList<LineasBus>();
+
+		try {
+
+			ps = con.prepareStatement(sql);
+
 			while (rs.next()) {
-				
+
 				LineasBus miLinea = new LineasBus();
-				
+
 				miLinea.setCod_lineas(rs.getString("Cod_Linea"));
 				miLinea.setNombreBus(rs.getString("Nombre"));
-				
+
 				lineas.add(miLinea);
-			
 
 			}
 
 			ps.close();
 			rs.close();
 			con.close();
-			
+
 		} catch (Exception e) {
-			
+
 			System.out.println("Error: Clase Contacto, metodo obtener linea");
-			
+
 		}
-		
-		return lineas ;
-	
-	
+
+		return lineas;
+
 	}
 }

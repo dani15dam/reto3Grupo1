@@ -20,7 +20,6 @@ import com.toedter.calendar.JDateChooser;
 import java.awt.Color;
 import java.awt.Font;
 
-
 public class IdaVuelta {
 	/**
 	 * obtiene la ventana ida y vuelta
@@ -43,7 +42,7 @@ public class IdaVuelta {
 	/**
 	 * lista de los trayectos
 	 */
-	private JComboBox <String> trayectoIda2;
+	private JComboBox<String> trayectoIda2;
 	/**
 	 * lista de las paradas de destino
 	 */
@@ -73,17 +72,15 @@ public class IdaVuelta {
 	 * Launch the application.
 	 */
 	public static void mIniciarIdaVuelta() {
-				try {
-					IdaVuelta ida = new IdaVuelta();
-					ida.idaVuelta.setVisible(true);
-					
-				
-					
-					ControladorIdaVuelta controladorIdaVuelta = new ControladorIdaVuelta(ida);
-					
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
+		try {
+			IdaVuelta ida = new IdaVuelta();
+			ida.idaVuelta.setVisible(true);
+
+			ControladorIdaVuelta controladorIdaVuelta = new ControladorIdaVuelta(ida);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	/**
@@ -92,7 +89,6 @@ public class IdaVuelta {
 	public IdaVuelta() {
 		initialize();
 	}
-	
 
 	/**
 	 * Initialize the contents of the frame.
@@ -103,84 +99,84 @@ public class IdaVuelta {
 		idaVuelta.setBounds(100, 100, 551, 384);
 		idaVuelta.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		idaVuelta.getContentPane().setLayout(null);
-		
+
 		JPanel panel = new JPanel();
 		panel.setBackground(Color.WHITE);
 		panel.setBounds(0, 0, 535, 334);
 		idaVuelta.getContentPane().add(panel);
 		panel.setLayout(null);
-		
+
 		JLabel lblIdaYVuelta = new JLabel("Ida y Vuelta");
 		lblIdaYVuelta.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		lblIdaYVuelta.setForeground(new Color(165, 42, 42));
 		lblIdaYVuelta.setBounds(227, 11, 113, 37);
 		panel.add(lblIdaYVuelta);
-		
+
 		trayectoIda2 = new JComboBox<>();
 		trayectoIda2.setBounds(49, 59, 134, 20);
 		panel.add(trayectoIda2);
-		
-		 horaVuelta = new JComboBox();
+
+		horaVuelta = new JComboBox();
 		horaVuelta.setBounds(291, 122, 68, 20);
 		panel.add(horaVuelta);
-		
+
 		cantidadIda2 = new JComboBox();
 		cantidadIda2.setBounds(271, 228, 38, 20);
-		cantidadIda2.setModel(new DefaultComboBoxModel(new String[] { "1", "2","3","4","5","6","7","8","9" }));
+		cantidadIda2.setModel(new DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9" }));
 		panel.add(cantidadIda2);
-		
+
 		horaIda = new JComboBox();
 		horaIda.setBounds(83, 122, 69, 20);
 		panel.add(horaIda);
-		
+
 		JLabel lblNewLabel = new JLabel("precio");
 		lblNewLabel.setBounds(408, 62, 46, 14);
 		panel.add(lblNewLabel);
-		
+
 		precioIda2 = new JTextField();
 		precioIda2.setBounds(459, 59, 66, 20);
 		panel.add(precioIda2);
 		precioIda2.setColumns(10);
-		
+
 		btnSiguienteIdaVuelta = new JButton("siguiente");
 		btnSiguienteIdaVuelta.setBackground(Color.WHITE);
 		btnSiguienteIdaVuelta.setBounds(436, 300, 89, 23);
 		panel.add(btnSiguienteIdaVuelta);
-		
+
 		btnCancelarIdaVuelta = new JButton("cancelar");
 		btnCancelarIdaVuelta.setBounds(14, 311, 89, 23);
 		panel.add(btnCancelarIdaVuelta);
-		
+
 		JLabel lblVuelta = new JLabel("Vuelta");
 		lblVuelta.setBounds(239, 97, 46, 14);
 		panel.add(lblVuelta);
-		
+
 		dateChooserIda = new JDateChooser();
 		dateChooserIda.setDate(new Date());
 		dateChooserIda.setBounds(73, 91, 95, 20);
 		panel.add(dateChooserIda);
-		
+
 		dateChooserVuelta = new JDateChooser();
 		dateChooserVuelta.setDate(new Date());
 		dateChooserVuelta.setBounds(281, 91, 95, 20);
 		panel.add(dateChooserVuelta);
-		
+
 		comboBoxIdaVueltaDestino = new JComboBox();
 		comboBoxIdaVueltaDestino.setBounds(271, 59, 128, 20);
 		panel.add(comboBoxIdaVueltaDestino);
-		
+
 		JLabel lblNewLabel_1 = new JLabel("Destino");
 		lblNewLabel_1.setBounds(208, 62, 46, 14);
 		panel.add(lblNewLabel_1);
-		
+
 		JLabel lblNewLabel_2 = new JLabel("Origen");
 		lblNewLabel_2.setBounds(14, 62, 46, 14);
 		panel.add(lblNewLabel_2);
-		
+
 		JLabel lblNewLabel_3 = new JLabel("ida");
 		lblNewLabel_3.setBounds(45, 97, 46, 14);
 		panel.add(lblNewLabel_3);
-		
+
 		JLabel lblNewLabel_4 = new JLabel("Cantidad");
 		lblNewLabel_4.setBounds(215, 231, 46, 14);
 		panel.add(lblNewLabel_4);
@@ -188,6 +184,7 @@ public class IdaVuelta {
 
 	/**
 	 * metodos get y set permiten obtener los datos y modificarlos
+	 * 
 	 * @return devuelve los resultados
 	 */
 	public JComboBox getComboBoxIdaVueltaDestino() {
@@ -221,7 +218,6 @@ public class IdaVuelta {
 	public void setBtnCancelarIdaVuelta(JButton btnCancelarIdaVuelta) {
 		this.btnCancelarIdaVuelta = btnCancelarIdaVuelta;
 	}
-
 
 	public JComboBox getTrayectoIda2() {
 		return trayectoIda2;
@@ -271,5 +267,4 @@ public class IdaVuelta {
 		this.precioIda2 = precioIda2;
 	}
 
-	
 }

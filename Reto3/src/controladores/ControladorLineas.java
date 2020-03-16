@@ -32,7 +32,7 @@ public class ControladorLineas implements ActionListener {
 	 * variable del objeto precio
 	 */
 	private Precio precio;
-	
+
 	public ControladorLineas(Lineas pLineas) {
 
 		this.ventanaLinea = pLineas;
@@ -40,6 +40,7 @@ public class ControladorLineas implements ActionListener {
 		rellenarComboParadas();
 
 	}
+
 	/**
 	 * este metodo inicializa los botones
 	 */
@@ -48,8 +49,8 @@ public class ControladorLineas implements ActionListener {
 		this.ventanaLinea.getBtnSiguienteLineas().addActionListener(this);
 		this.ventanaLinea.getBtnSiguienteLineas().setActionCommand("btnSiguiente");
 
-
 	}
+
 	/**
 	 * otorga una accion a cada boton
 	 */
@@ -57,14 +58,15 @@ public class ControladorLineas implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		/**
 		 * dependiendo el boton seleccionado el programa realizara una funcion
-		 
+		 * 
 		 */
 		switch (e.getActionCommand()) {
 
 		case "btnSiguiente":
 			String tipo = ventanaLinea.getTipoLinea().getSelectedItem().toString();
 			/**
-			 * este if compara la eleccion del boton y dependiendo de la seleccion abrira una ventana u otra
+			 * este if compara la eleccion del boton y dependiendo de la seleccion abrira
+			 * una ventana u otra
 			 */
 			if (tipo.equalsIgnoreCase("ida")) {
 				Ida ida = new Ida();
@@ -84,6 +86,7 @@ public class ControladorLineas implements ActionListener {
 
 		}
 	}
+
 	/**
 	 * este metodo rellena la lista de lineas
 	 */

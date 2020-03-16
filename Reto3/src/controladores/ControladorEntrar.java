@@ -1,4 +1,4 @@
- package controladores;
+package controladores;
 
 import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;
@@ -25,7 +25,8 @@ public class ControladorEntrar implements ActionListener {
 	private InicioSesion vistaEntrar;
 	private Ida ventanaIda;
 	private IdaVuelta ventanaIdaVuelta;
-	public ControladorEntrar(InicioSesion pEntrar,Ida ventanaIda, IdaVuelta ventanaIdaVuelta) {
+
+	public ControladorEntrar(InicioSesion pEntrar, Ida ventanaIda, IdaVuelta ventanaIdaVuelta) {
 
 		this.vistaEntrar = pEntrar;
 		this.ventanaIda = ventanaIda;
@@ -64,11 +65,10 @@ public class ControladorEntrar implements ActionListener {
 			break;
 
 		case BtnSalir:
-			
+
 			Inicio inicio = new Inicio();
 			inicio.setVisible(true);
 
-	
 			vistaEntrar.dispose();
 
 			break;
@@ -81,7 +81,8 @@ public class ControladorEntrar implements ActionListener {
 
 			vistaRegistro.setVisible(true);
 
-			ControladorRegistro controladorRegistro = new ControladorRegistro(vistaRegistro, ventanaIda, ventanaIdaVuelta);
+			ControladorRegistro controladorRegistro = new ControladorRegistro(vistaRegistro, ventanaIda,
+					ventanaIdaVuelta);
 
 			break;
 
@@ -112,4 +113,3 @@ public class ControladorEntrar implements ActionListener {
 	}
 
 }
-

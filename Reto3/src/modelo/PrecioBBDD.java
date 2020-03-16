@@ -7,14 +7,17 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import conexion.Conexion;
+
 /**
  * se accede ala base de datos y guarda los datos de esta
+ * 
  * @author Dani
  *
  */
 public class PrecioBBDD {
 	/**
 	 * obtiene la lngitud del origen
+	 * 
 	 * @param cod_parada recibe un parametro de cod parada
 	 * @return devuelve los resultados
 	 * @throws SQLException lanza excepcion
@@ -29,7 +32,7 @@ public class PrecioBBDD {
 		 * realiza la consulta a la base de datos
 		 */
 		String sql = "select longitud from parada where cod_parada='" + cod_parada + "';";
-		
+
 		PreparedStatement ps = con.prepareStatement(sql);
 
 		ResultSet rs = ps.executeQuery();
@@ -42,7 +45,7 @@ public class PrecioBBDD {
 			ps = con.prepareStatement(sql);
 
 			if (rs.next()) {
-				result =  rs.getDouble("Longitud");
+				result = rs.getDouble("Longitud");
 
 			}
 
@@ -54,13 +57,15 @@ public class PrecioBBDD {
 			ps.close();
 			rs.close();
 			con.close();
-			
+
 		}
 		return result;
 
 	}
+
 	/**
 	 * obtiene la latitud del origen accediendo a la base de datos
+	 * 
 	 * @param cod_parada recibe un parametro
 	 * @return devuelve resultado
 	 * @throws SQLException lanza excepcion
@@ -80,7 +85,6 @@ public class PrecioBBDD {
 
 		ResultSet rs = ps.executeQuery();
 
-
 		try {
 
 			ps = con.prepareStatement(sql);
@@ -88,7 +92,6 @@ public class PrecioBBDD {
 			if (rs.next()) {
 				result = rs.getDouble("Latitud");
 			}
-
 
 		} catch (Exception e) {
 
@@ -98,14 +101,16 @@ public class PrecioBBDD {
 			ps.close();
 			rs.close();
 			con.close();
-			
+
 		}
 
 		return result;
 
 	}
+
 	/**
 	 * ontiene de la base de datos la lngitud del destino
+	 * 
 	 * @param cod_parada recibe parametro
 	 * @return devuelve resultado
 	 * @throws SQLException lanza excepcion
@@ -129,7 +134,7 @@ public class PrecioBBDD {
 
 			ps = con.prepareStatement(sql);
 
-			if(rs.next()) {
+			if (rs.next()) {
 				result = rs.getDouble("Longitud");
 
 			}
@@ -146,14 +151,16 @@ public class PrecioBBDD {
 			ps.close();
 			rs.close();
 			con.close();
-			
+
 		}
 
 		return result;
 
 	}
+
 	/**
 	 * obtiene la latitud de la base de datos
+	 * 
 	 * @param cod_parada recibe parametro
 	 * @return resultado
 	 * @throws SQLException lanza excepcion
@@ -173,7 +180,6 @@ public class PrecioBBDD {
 		PreparedStatement ps = con.prepareStatement(sql);
 
 		ResultSet rs = ps.executeQuery();
-
 
 		try {
 

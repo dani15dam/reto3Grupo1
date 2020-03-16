@@ -25,6 +25,7 @@ import java.awt.Color;
 
 /**
  * esta clase tiene la ventana de lineas
+ * 
  * @author Dani
  *
  */
@@ -44,28 +45,27 @@ public class Lineas {
 	/**
 	 * lsita desplegable con las paradas
 	 */
-	private JComboBox <Paradas>comboBoxLineas;
-	
-	//get-set
-	
+	private JComboBox<Paradas> comboBoxLineas;
+
+	// get-set
+
 	/**
-	 * metodos get y set para obtener los botones y set para la modificacion de las listas 
+	 * metodos get y set para obtener los botones y set para la modificacion de las
+	 * listas
+	 * 
 	 * @return retorna una variable
 	 */
 	public JButton getBtnSiguienteLineas() {
 		return btnSiguienteLineas;
 	}
 
-
 	public JComboBox getComboBoxLineas() {
 		return comboBoxLineas;
 	}
 
-
 	public void setComboBoxLineas(JComboBox comboBoxLineas) {
 		this.comboBoxLineas = comboBoxLineas;
 	}
-
 
 	public JComboBox getTipoLinea() {
 		return tipoLinea;
@@ -88,26 +88,22 @@ public class Lineas {
 	}
 
 	private JButton btnCancelarLineas;
-	
 
-	
-	
-	//otros metodos	
-	
-	public static  void mIniciarLineas () {
+	// otros metodos
 
-				try {
-					Lineas linea = new Lineas();
-					linea.lineas.setVisible(true);
-					ControladorLineas controladorLinea = new ControladorLineas(linea);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
+	public static void mIniciarLineas() {
+
+		try {
+			Lineas linea = new Lineas();
+			linea.lineas.setVisible(true);
+			ControladorLineas controladorLinea = new ControladorLineas(linea);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	/**
-	 * JoptionPane.showmessage Create the application.
-	 * inicializa
+	 * JoptionPane.showmessage Create the application. inicializa
 	 */
 	public Lineas() {
 		initialize();
@@ -152,20 +148,16 @@ public class Lineas {
 		btnCancelarLineas = new JButton("cancelar");
 		btnCancelarLineas.setBounds(10, 253, 89, 23);
 		panel.add(btnCancelarLineas);
-		
-		
+
 		btnSiguienteLineas = new JButton("siguiente");
 		btnSiguienteLineas.setBounds(335, 253, 89, 23);
 		panel.add(btnSiguienteLineas);
-		
+
 		comboBoxLineas = new JComboBox();
 		comboBoxLineas.setBounds(137, 87, 156, 38);
-		
-		panel.add(comboBoxLineas);
-		
-		
-		
-	}
 
+		panel.add(comboBoxLineas);
+
+	}
 
 }

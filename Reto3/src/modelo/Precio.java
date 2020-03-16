@@ -1,11 +1,13 @@
 package modelo;
+
 /**
  * esta clase guardara el precio
+ * 
  * @author Dani
  *
  */
 public class Precio {
-	
+
 	/**
 	 * guarada la latitud
 	 */
@@ -27,33 +29,32 @@ public class Precio {
 	 */
 	private String asientos;
 
-	
-		
-	
 	public Precio() {
-		
+
 	}
+
 	/**
 	 * inicializa los atributos
+	 * 
 	 * @param longitud guarda la longitud
-	 * @param latitud guarda la latitud
-	 * @param precio guarda el precio
-	 * @param consumo guarda el consumo
+	 * @param latitud  guarda la latitud
+	 * @param precio   guarda el precio
+	 * @param consumo  guarda el consumo
 	 * @param asientos guarda el numero de asientos
 	 */
-	public Precio(String longitud, String latitud, String precio, String consumo,String asientos ) {
-		
+	public Precio(String longitud, String latitud, String precio, String consumo, String asientos) {
+
 		this.latitud = latitud;
-		this.asientos=asientos;
-		this.consumo=consumo;
-		this.precio=precio;
-		this.longitud=longitud;
-		
-				
-		
+		this.asientos = asientos;
+		this.consumo = consumo;
+		this.precio = precio;
+		this.longitud = longitud;
+
 	}
+
 	/**
 	 * permiten obetener y modificar los atributos
+	 * 
 	 * @return devuelve las variables
 	 */
 	public String getLatitud() {
@@ -95,7 +96,5 @@ public class Precio {
 	public void setAsientos(String asientos) {
 		this.asientos = asientos;
 	}
-	
-
 
 }

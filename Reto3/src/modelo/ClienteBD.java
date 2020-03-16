@@ -45,23 +45,21 @@ public class ClienteBD {
 		return registrar;
 	}
 
-	public boolean mBuscarContacto(String dni, String contrasena)  {
-
+	public boolean mBuscarContacto(String dni, String contrasena) {
 
 		boolean existeUsuario = false;
 
 		try {
-			
-			Connection con= Conexion.conectar();
-			
-			String sql="SELECT * FROM cliente WHERE dni = ? and contraseña = ?";
-			PreparedStatement ps=con.prepareStatement(sql);
+
+			Connection con = Conexion.conectar();
+
+			String sql = "SELECT * FROM cliente WHERE dni = ? and contraseña = ?";
+			PreparedStatement ps = con.prepareStatement(sql);
 
 			ps.setString(1, dni);
 			ps.setString(2, contrasena);
-			ResultSet rs=ps.executeQuery();
+			ResultSet rs = ps.executeQuery();
 
-		
 			while (rs.next()) {
 				existeUsuario = true;
 			}
@@ -69,19 +67,14 @@ public class ClienteBD {
 			ps.close();
 			rs.close();
 			con.close();
-			
 
 		} catch (SQLException e) {
-			
+
 			System.out.println("Error: Clase Contacto, mï¿½todo buscar");
-			e.printStackTrace();			
+			e.printStackTrace();
 		}
 
 		return existeUsuario;
 	}
-
-	
-	
-	
 
 }

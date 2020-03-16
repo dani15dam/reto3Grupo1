@@ -26,8 +26,10 @@ import vista.Ida;
 import vista.IdaVuelta;
 import vista.InicioSesion;
 import vista.Lineas;
+
 /**
  * controla las funciones de la ventana ida y vuelta
+ * 
  * @author Dani
  *
  */
@@ -54,11 +56,13 @@ public class ControladorIdaVuelta implements ActionListener {
 		inicializarControladorIdaVuelta();
 
 	}
+
 	/**
 	 * inicializa los atributos y los metodos
-	 * @param pTrayectoIda recibe un parametro
+	 * 
+	 * @param pTrayectoIda  recibe un parametro
 	 * @param pVentanaLinea recibe un parametro
-	 * @param pHora recibe una hora
+	 * @param pHora         recibe una hora
 	 */
 	public ControladorIdaVuelta(IdaVuelta pTrayectoIda, Lineas pVentanaLinea, Hora pHora) {
 
@@ -71,18 +75,18 @@ public class ControladorIdaVuelta implements ActionListener {
 		rellenarListaParadas();
 		rellenarHoras2();
 		deshabilitarFecha();
-		
+
 		Calculadora calculadora = new Calculadora(this);
 		calculadora.compute();
 		ventanaIdaVuelta.getTrayectoIda2().addItemListener(calculadora);
-		ventanaIdaVuelta.getComboBoxIdaVueltaDestino().addItemListener(calculadora);	
-
+		ventanaIdaVuelta.getComboBoxIdaVueltaDestino().addItemListener(calculadora);
 
 	}
 
 	public ControladorIdaVuelta() {
 
 	}
+
 	/**
 	 * este metodo iicializa los botonees de la ventana ida y vuelta
 	 */
@@ -98,6 +102,7 @@ public class ControladorIdaVuelta implements ActionListener {
 		this.ventanaIdaVuelta.getBtnCancelarIdaVuelta().setActionCommand("cancelar");
 
 	}
+
 	/**
 	 * este metodo da acciones a los botones
 	 */
@@ -105,7 +110,8 @@ public class ControladorIdaVuelta implements ActionListener {
 
 		String botonPulsado = arg0.getActionCommand();
 		/**
-		 * con el switch dependiendo del boton pulsado el programa realizara una funcion u otra 
+		 * con el switch dependiendo del boton pulsado el programa realizara una funcion
+		 * u otra
 		 */
 		switch (botonPulsado) {
 		case "siguiente":
@@ -113,7 +119,7 @@ public class ControladorIdaVuelta implements ActionListener {
 			InicioSesion inicioSesion = new InicioSesion();
 			inicioSesion.setVisible(true);
 
-			ControladorEntrar controladorEntrar = new ControladorEntrar(inicioSesion,null, ventanaIdaVuelta);
+			ControladorEntrar controladorEntrar = new ControladorEntrar(inicioSesion, null, ventanaIdaVuelta);
 			ventanaIdaVuelta.getIdaVuelta().dispose();
 
 			break;
@@ -133,6 +139,7 @@ public class ControladorIdaVuelta implements ActionListener {
 
 		}
 	}
+
 	/**
 	 * este metodo rellena la lista despegable de las paradas
 	 */
@@ -159,6 +166,7 @@ public class ControladorIdaVuelta implements ActionListener {
 
 		}
 	}
+
 	/**
 	 * este metodo rellena la lista desplegable de las horas
 	 */
@@ -185,13 +193,16 @@ public class ControladorIdaVuelta implements ActionListener {
 		}
 
 	}
+
 	/**
-	 * este metodo deshabilita la fecha de seleccion en el calendario si es anterior a la fecha actual
+	 * este metodo deshabilita la fecha de seleccion en el calendario si es anterior
+	 * a la fecha actual
 	 */
 	private void deshabilitarFecha() {
 		this.ventanaIdaVuelta.getDateChooserIda().setMinSelectableDate(new Date());
 		this.ventanaIdaVuelta.getDateChooserVuelta().setMinSelectableDate(new Date());
 	}
+
 	/**
 	 * este metodo rellena la lista desplegable de las horas
 	 */
@@ -220,14 +231,16 @@ public class ControladorIdaVuelta implements ActionListener {
 		}
 
 	}
+
 	/**
 	 * este metodo calcula la distancia entre las cordenadas
-	 * @return devuelve 
+	 * 
+	 * @return devuelve
 	 * @throws NumberFormatException recoge solo numeros
-	 * @throws SQLException lanza excepion
+	 * @throws SQLException          lanza excepion
 	 */
 	public double distanciaCoord() throws NumberFormatException, SQLException {
-	
+
 		/**
 		 * este objeto guarda el origen de la lista desplegable
 		 */
@@ -262,29 +275,34 @@ public class ControladorIdaVuelta implements ActionListener {
 
 		return distancia;
 	}
+
 	/**
 	 * este metodo calcula el precio teniendo en cuneta la distancia
+	 * 
 	 * @param distancia necesita un parametro de distancia
 	 * @return devuelve la distancia
 	 * @throws NumberFormatException asegura que recibe numeros
-	 * @throws SQLException lanza eexcepcion
+	 * @throws SQLException          lanza eexcepcion
 	 */
 	public double obtenerPrecio(double distancia) throws NumberFormatException, SQLException {
 		return distanciaCoord() * 8 * 30 / 12;
 	}
-	
+
 	public JTextField getPrecio() {
 		return ventanaIdaVuelta.getPrecioIda2();
 	}
+
 	/**
-	 * esta clase permite que al pulsar seleccionar en e arraylist las distancias el precio se rellene
+	 * esta clase permite que al pulsar seleccionar en e arraylist las distancias el
+	 * precio se rellene
+	 * 
 	 * @author Dani
 	 *
 	 */
 	class Calculadora implements ItemListener {
-		
+
 		private ControladorIdaVuelta controladorVuelta;
-		
+
 		public Calculadora(ControladorIdaVuelta controladorVuelta) {
 			System.out.println("handler");
 			this.controladorVuelta = controladorVuelta;
@@ -294,6 +312,7 @@ public class ControladorIdaVuelta implements ActionListener {
 		public void itemStateChanged(ItemEvent e) {
 			compute();
 		}
+
 		/**
 		 * este metodo rellena el espacio para el precio
 		 */
@@ -301,14 +320,14 @@ public class ControladorIdaVuelta implements ActionListener {
 			try {
 				double distancia = controladorVuelta.distanciaCoord();
 				double precio = controladorVuelta.obtenerPrecio(distancia);
-				double precioRedondeado=Math.floor(precio*100)/100;
+				double precioRedondeado = Math.floor(precio * 100) / 100;
 				controladorVuelta.getPrecio().setText(Double.toString(precioRedondeado));
-			
+
 			} catch (Exception ignore) {
 				ignore.printStackTrace();
 			}
-			
+
 		}
-		
+
 	}
 }

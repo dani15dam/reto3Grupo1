@@ -45,7 +45,7 @@ public class Ida {
 	 */
 	private JComboBox<String> cbDestinoIda;
 	/**
-	 * variable del  boton
+	 * variable del boton
 	 */
 	private JButton btnSiguienteIda;
 	/**
@@ -56,8 +56,8 @@ public class Ida {
 	 * calendario para seleccionar fecha
 	 */
 	private JDateChooser dateChooserFechaIda;
-	Fecha fechas=new Fecha();
-	
+	Fecha fechas = new Fecha();
+
 	/**
 	 * Launch the application.
 	 */
@@ -82,15 +82,19 @@ public class Ida {
 	public Ida() {
 		initialize();
 	}
+
 	/**
 	 * permite obtener la ventana ida
+	 * 
 	 * @return devuelve ida
 	 */
 	public JFrame getIda() {
 		return Ida;
 	}
+
 	/**
 	 * permite modificar la ventana ida
+	 * 
 	 * @param ida inicializa la ventana ida
 	 */
 	public void setIda(JFrame ida) {
@@ -124,9 +128,8 @@ public class Ida {
 		cantidadIda = new JComboBox();
 		cantidadIda.setBackground(Color.WHITE);
 		cantidadIda.setBounds(125, 137, 40, 20);
-		cantidadIda.setModel(new DefaultComboBoxModel(new String[] { "1", "2","3","4","5","6","7","8","9" }));
+		cantidadIda.setModel(new DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9" }));
 		panel.add(cantidadIda);
-
 
 		JLabel lblPrecio = new JLabel("precio");
 		lblPrecio.setBounds(284, 140, 46, 14);
@@ -143,7 +146,6 @@ public class Ida {
 		btnSiguienteIda.setBackground(Color.WHITE);
 		btnSiguienteIda.setBounds(350, 291, 89, 23);
 		panel.add(btnSiguienteIda);
-		
 
 		btnCancelarIda = new JButton("Cancelar");
 		btnCancelarIda.setBackground(Color.WHITE);
@@ -157,11 +159,11 @@ public class Ida {
 		lblIda.setFont(new Font("Tahoma", Font.ITALIC, 23));
 		lblIda.setBounds(200, 11, 60, 28);
 		panel.add(lblIda);
-		
+
 		cbDestinoIda = new JComboBox();
 		cbDestinoIda.setBounds(312, 86, 114, 20);
 		panel.add(cbDestinoIda);
-		
+
 		dateChooserFechaIda = new JDateChooser();
 		dateChooserFechaIda.setDate(new Date());
 		dateChooserFechaIda.setBounds(20, 134, 95, 20);
@@ -175,7 +177,6 @@ public class Ida {
 	public void setCbDestinoIda(JComboBox cbDestinoIda) {
 		this.cbDestinoIda = cbDestinoIda;
 	}
-
 
 	public JComboBox getTrayectoIda() {
 		return trayectoIda;
@@ -212,8 +213,8 @@ public class Ida {
 	public JButton getBtnCancelarIda() {
 		return btnCancelarIda;
 	}
-	
-	public JTextField getPrecioIda () {
+
+	public JTextField getPrecioIda() {
 		return precioIda;
 	}
 
@@ -231,13 +232,8 @@ public class Ida {
 
 	@Override
 	public String toString() {
-		
+
 		return "Ida [dateChooserFechaIda=" + dateChooserFechaIda + "]";
 	}
 
-	
-	
-
-
-	
 }

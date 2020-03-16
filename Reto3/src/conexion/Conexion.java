@@ -5,12 +5,12 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class Conexion {
-	public static  Connection conectar() {
+	public static Connection conectar() {
 		Connection con = null;
-		
+
 		String password = "";
-		String usuario = "root"; //root@localhost
-		String url = "jdbc:mysql://localhost:3306/reto3db?user=" + usuario+ "&password=" + password;
+		String usuario = "root"; // root@localhost
+		String url = "jdbc:mysql://localhost:3306/reto3db?user=" + usuario + "&password=" + password;
 		try {
 			con = DriverManager.getConnection(url);
 			if (con != null) {
@@ -22,6 +22,5 @@ public class Conexion {
 		}
 		return con;
 	}
-	
 
 }

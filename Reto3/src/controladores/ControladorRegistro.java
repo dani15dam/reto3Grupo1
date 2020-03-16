@@ -22,14 +22,15 @@ import vista.Registro;
 public class ControladorRegistro implements ActionListener {
 
 	private Registro vistaRegistro;
-	private Ida ventanaIda;		
+	private Ida ventanaIda;
 	private IdaVuelta ventanaIdaVuelta;
+
 	public ControladorRegistro(Registro pRegistro, Ida ventanaIda, IdaVuelta ventanaIdaVuelta) {
 
 		this.vistaRegistro = pRegistro;
-		
+
 		inicializarControlador();
-		
+
 		this.ventanaIda = ventanaIda;
 		this.ventanaIdaVuelta = ventanaIdaVuelta;
 	}
@@ -58,7 +59,8 @@ public class ControladorRegistro implements ActionListener {
 
 			vistaInicioSesion.setVisible(true);
 
-			ControladorEntrar controladorEntrar = new ControladorEntrar(vistaInicioSesion, ventanaIda, ventanaIdaVuelta);
+			ControladorEntrar controladorEntrar = new ControladorEntrar(vistaInicioSesion, ventanaIda,
+					ventanaIdaVuelta);
 
 			break;
 

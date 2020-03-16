@@ -23,8 +23,10 @@ import modelo.PrecioBBDD;
 import vista.Ida;
 import vista.InicioSesion;
 import vista.Lineas;
+
 /**
  * esta classe inicializara los botones de la vista y les dara una funcion
+ * 
  * @author Dani
  */
 public class ControladorIda implements ActionListener {
@@ -44,8 +46,10 @@ public class ControladorIda implements ActionListener {
 	 * la variable fecha no permite acceder a los datos del objeto
 	 */
 	private Fecha fechas = new Fecha();
+
 	/**
 	 * este metodo inicializa el controlador
+	 * 
 	 * @param pTrayecto recibe un parametro de trayecto
 	 */
 	public ControladorIda(Ida pTrayecto) {
@@ -55,11 +59,13 @@ public class ControladorIda implements ActionListener {
 		inicializarControlador();
 
 	}
+
 	/**
 	 * este metodo inicializa las variables y los metodos creados
-	 * @param pTrayecto recibe una variable trayecto
+	 * 
+	 * @param pTrayecto     recibe una variable trayecto
 	 * @param pVentanaLinea recibe una variable
-	 * @param pHora recibe variable
+	 * @param pHora         recibe variable
 	 */
 	public ControladorIda(Ida pTrayecto, Lineas pVentanaLinea, Hora pHora) {
 
@@ -85,8 +91,9 @@ public class ControladorIda implements ActionListener {
 	public ControladorIda() {
 
 	}
+
 	/**
-	 * este metodo llama a los botones de la vista 
+	 * este metodo llama a los botones de la vista
 	 */
 	public void inicializarControlador() {
 
@@ -95,14 +102,13 @@ public class ControladorIda implements ActionListener {
 
 		this.ventanaIda.getTrayectoIda().addActionListener(this);
 		this.ventanaIda.getTrayectoIda().setActionCommand("trayecto");
-		
 
-		
 		this.ventanaIda.getBtnCancelarIda().addActionListener(this);
-		
+
 		this.ventanaIda.getBtnCancelarIda().setActionCommand("cancelar");
 
 	}
+
 	/**
 	 * este metodo da las funciones a cada boton de la vista
 	 */
@@ -110,11 +116,11 @@ public class ControladorIda implements ActionListener {
 
 		String botonPulsado = e.getActionCommand();
 		/**
-		 * con el switch dependiendo del boton pulsado el programa realizara una funcion u otra 
+		 * con el switch dependiendo del boton pulsado el programa realizara una funcion
+		 * u otra
 		 */
 		switch (botonPulsado) {
 		case "siguiente":
-
 
 			InicioSesion sesion = new InicioSesion();
 			sesion.setVisible(true);
@@ -131,8 +137,7 @@ public class ControladorIda implements ActionListener {
 			} catch (NumberFormatException | SQLException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
-			} 
-			
+			}
 
 			break;
 
@@ -148,6 +153,7 @@ public class ControladorIda implements ActionListener {
 
 		}
 	}
+
 	/**
 	 * este metodo rellena la lista desplegable de paradas
 	 */
@@ -174,6 +180,7 @@ public class ControladorIda implements ActionListener {
 
 		}
 	}
+
 	/**
 	 * este metodo rellena la lista desplegable de las horas
 	 */
@@ -199,8 +206,10 @@ public class ControladorIda implements ActionListener {
 		}
 
 	}
+
 	/**
-	 * este metodo prohibe seleccionar en el candelario una fecha anterior a la actual
+	 * este metodo prohibe seleccionar en el candelario una fecha anterior a la
+	 * actual
 	 */
 	public void deshabilitarFecha() {
 		this.ventanaIda.getDateChooserFechaIda().setMinSelectableDate(new Date());
@@ -208,9 +217,10 @@ public class ControladorIda implements ActionListener {
 
 	/**
 	 * este metodo calcula las distancias que hay entre las paradas
+	 * 
 	 * @return distancia
 	 * @throws NumberFormatException recibe solo numeros
-	 * @throws SQLException lanza excepcion
+	 * @throws SQLException          lanza excepcion
 	 */
 	public double distanciaCoord() throws NumberFormatException, SQLException {
 		/**
@@ -219,22 +229,22 @@ public class ControladorIda implements ActionListener {
 		ArrayList<Precio> preciodistancias = new ArrayList<Precio>();
 
 		Paradas origen = (Paradas) this.ventanaIda.getTrayectoIda().getSelectedItem();
-		
+
 		Paradas destino = (Paradas) this.ventanaIda.getCbDestinoIda().getSelectedItem();
 		/**
 		 * esta variable obtiene la longitud del origen
 		 */
 		double origenLongitud = Double.parseDouble(PrecioBBDD.obtenerLongOrigen(origen.getCod_parada()).toString());
 		/**
-		 *  esta variable obtiene la latitud del origen
+		 * esta variable obtiene la latitud del origen
 		 */
 		double origenLatitud = Double.parseDouble(PrecioBBDD.obtenerLatOrigen(origen.getCod_parada()).toString());
 		/**
-		 *  esta variable obtiene la longitud del destino
+		 * esta variable obtiene la longitud del destino
 		 */
 		double destinoLongitud = Double.parseDouble(PrecioBBDD.obtenerLongDestino(destino.getCod_parada()).toString());
 		/**
-		 *  esta variable obtiene la latitud del destino
+		 * esta variable obtiene la latitud del destino
 		 */
 		double destinoLatitud = Double.parseDouble(PrecioBBDD.obtenerLatDestino(destino.getCod_parada()).toString());
 
@@ -250,29 +260,34 @@ public class ControladorIda implements ActionListener {
 
 		return distancia;
 	}
+
 	/**
 	 * este metodo calcula el precio mediante la distancia
+	 * 
 	 * @param distancia recibe un parametro distancia
 	 * @return distancia
 	 * @throws NumberFormatException comprueba que es un numero
-	 * @throws SQLException lanza excepcion
+	 * @throws SQLException          lanza excepcion
 	 */
 	public double obtenerPrecio(double distancia) throws NumberFormatException, SQLException {
-		return  distanciaCoord() * 0.80 * 30 / 30;
+		return distanciaCoord() * 0.80 * 30 / 30;
 	}
-	
+
 	public JTextField getPrecio() {
 		return ventanaIda.getPrecioIda();
 	}
+
 	/**
-	 * esta clase permite que al pulsar seleccionar en e arraylist las distancias el precio se rellene 
+	 * esta clase permite que al pulsar seleccionar en e arraylist las distancias el
+	 * precio se rellene
+	 * 
 	 * @author Dani
 	 *
 	 */
 	class Calculadora implements ItemListener {
-		
+
 		private ControladorIda controlador;
-		
+
 		public Calculadora(ControladorIda controlador) {
 			System.out.println("handler");
 			this.controlador = controlador;
@@ -282,6 +297,7 @@ public class ControladorIda implements ActionListener {
 		public void itemStateChanged(ItemEvent e) {
 			compute();
 		}
+
 		/**
 		 * este metodo rellena el precio
 		 */
@@ -289,15 +305,13 @@ public class ControladorIda implements ActionListener {
 			try {
 				double distancia = controlador.distanciaCoord();
 				double precio = controlador.obtenerPrecio(distancia);
-				double precioRedondeado=Math.floor(precio*100)/100;
+				double precioRedondeado = Math.floor(precio * 100) / 100;
 				controlador.getPrecio().setText(Double.toString(precioRedondeado));
 			} catch (Exception ignore) {
 				ignore.printStackTrace();
 			}
-			
+
 		}
-		
+
 	}
 }
-	
-

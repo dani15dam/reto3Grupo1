@@ -1,6 +1,8 @@
 package modelo;
+
 /**
  * esta clase guarda las paradas de autobus
+ * 
  * @author Dani
  *
  */
@@ -21,28 +23,32 @@ public class Paradas {
 	 * guarda las coordenadas
 	 */
 	private String coordenadas;
-	
+
 	public Paradas() {
 		super();
 	}
+
 	/**
 	 * inicializa los atributos
-	 * @param pCod_parada guarda el codigo de parada
+	 * 
+	 * @param pCod_parada    guarda el codigo de parada
 	 * @param pNombre_parada guarda el nombre de la parada
-	 * @param pCalle guarda la calle
-	 * @param pCoordenadas guarda las coordenadas
+	 * @param pCalle         guarda la calle
+	 * @param pCoordenadas   guarda las coordenadas
 	 */
-	public Paradas(String pCod_parada, String pNombre_parada , String pCalle,String pCoordenadas) {
+	public Paradas(String pCod_parada, String pNombre_parada, String pCalle, String pCoordenadas) {
 		super();
-		
+
 		this.cod_parada = pCod_parada;
 		this.nombre_parada = pNombre_parada;
 		this.calle = pCalle;
 		this.coordenadas = pCoordenadas;
-			
+
 	}
+
 	/**
 	 * los metodos get y set permiten obtener y modificar los atributos
+	 * 
 	 * @return devuelve las variables
 	 */
 	public String getCod_parada() {
@@ -76,9 +82,8 @@ public class Paradas {
 	public void setCoordenadas(String coordenadas) {
 		this.coordenadas = coordenadas;
 	}
-	public String toString(){
-	return this.nombre_parada;
+
+	public String toString() {
+		return this.nombre_parada;
 	}
 }
-
-	
